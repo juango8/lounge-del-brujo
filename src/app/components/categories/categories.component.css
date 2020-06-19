@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#section2 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url(src/assets/img/light-bg-02.png);
+  background-size: cover;
+  display: flex;
+  /*align-items: center;*/
+  color: #F2F2F2;
+  text-decoration: none;
+  alignment: center;
+  font-size: 1.4em;
+
+}
+
+.test {
+  margin-top: 17rem !important;
+}
