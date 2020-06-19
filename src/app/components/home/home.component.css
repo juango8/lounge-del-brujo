@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: #781621;
+  color: #F2F2F2;
+  border: none;
+  opacity: 80%;
+  position: relative;
+  height: 3em;
+  width: 12em;
+  font-size: 1.6em;
+  padding: 0 2em;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+
+button:hover {
+  background: #0A0A0A;
+  color: #781621;
+}
+
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #781621;
+  transition: 400ms ease all;
+}
+
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+#section1 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url(src/assets/img/light-bg-01.png);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
