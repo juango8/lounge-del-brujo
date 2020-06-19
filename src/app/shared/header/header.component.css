@@ -1,0 +1,12 @@
+.clean {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-op {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+img {
+  height: 12em;
+}
