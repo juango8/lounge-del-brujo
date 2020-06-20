@@ -1,0 +1,27 @@
+/*.test {*/
+/*  margin-top: 17rem !important;*/
+/*}*/
+
+p {
+  margin: 1em 0;
+}
+
+.test2 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.test3{
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  background: url(src/assets/img/about-banner.png);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+img{
+  max-width: 100%;
+  margin: 1em 0;
+}
