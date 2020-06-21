@@ -8,18 +8,16 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: url(src/assets/img/light-bg-02.png);
     background-size: cover;
     display: flex;
-    /*align-items: center;*/
-    color: #F2F2F2;
+    color: #0A0A0A;
     text-decoration: none;
     alignment: center;
     font-size: 1.4em;
 }
 
-.test {
-    margin-top: 17rem !important;
+.fomart-with-header {
+    margin-top: 12rem !important;
 }
 
 .items {
