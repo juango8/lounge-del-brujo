@@ -5,10 +5,9 @@
 }
 
 button {
-  background: #781621;
+  background: rgba(0,0,0,0.5);
   color: #F2F2F2;
   border: none;
-  opacity: 80%;
   position: relative;
   height: 3em;
   width: 12em;
@@ -20,8 +19,8 @@ button {
 }
 
 button:hover {
-  background: #0A0A0A;
-  color: #781621;
+  background: #781621;
+  color: #F2F2F2;
 }
 
 button:before,
