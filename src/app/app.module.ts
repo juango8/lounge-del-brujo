@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     APP_ROUTING
-    // AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
