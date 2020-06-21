@@ -1,6 +1,7 @@
 .clean {
   margin: 0;
   padding: 0;
+  position: absolute;
 }
 
 .bg-op {
@@ -8,5 +9,5 @@
 }
 
 img {
-  height: 12em;
+  height: 16em;
 }
