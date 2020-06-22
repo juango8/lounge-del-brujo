@@ -1,9 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
-. {
-  background: #F2F2F2;
-}
+
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+
+::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+
+/* Cambiamos el fondo cuando esté en active o hover */
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #781621;
+    background-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent, transparent)
+}

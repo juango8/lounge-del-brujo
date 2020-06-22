@@ -1,68 +1,87 @@
 .logo {
-  height: 10vh;
+    height: 10vh;
 }
 
 .wrapper {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .main {
-  width: 70%;
-  border-right: 6px solid #0A0A0A;
-  padding-bottom: 5vh;
+    width: 70%;
+    border-right: 6px solid #0A0A0A;
+    padding-bottom: 5vh;
 }
 
 .sidebar {
-  width: 29%;
-  height: 100vh;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding: 0 2em;
+    width: 29%;
+    height: 100vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding: 0 2em;
 }
 
 .foodcard {
-  margin: 1em;
-  width: 18rem;
+    margin: 1em;
+    width: 18rem;
+    border: 4px solid;
+    border-color: black;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px black, inset 0 0 9px white;
 }
 
 .foodcard div a {
-  color: #F2F2F2;
-
+    color: #F2F2F2;
 }
 
 .btn-lounge {
-  color: #F2F2F2;
-  background-color: #8C0E1D;
-  border-color: #781621;
+    color: #F2F2F2;
+    background-color: #8C0E1D;
+    border-color: #781621;
 }
 
 .btn-lounge:hover {
-  color: #F2F2F2;
-  background-color: #781621;
-  /*border-color: #0062cc*/
+    color: #F2F2F2;
+    background-color: #781621;
+    /*border-color: #0062cc*/
 }
 
 #btn-final {
-  position: absolute;
-  right: 0;
-  bottom: 5vh;
+    position: absolute;
+    right: 0;
+    bottom: 5vh;
 }
 
 .btn-dish {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .image-card {
-  height: auto;
-  /*width: auto;*/
+    height: auto;
+    margin-top: 10px;
+    /*width: auto;*/
 }
 
 .dish-name {
-  display: flex;
-  position: absolute;
-  right: 0;
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.category {
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.category:hover {
+    color: #781621 !important;
+}
+
+.category:active {
+    color: #781621 !important;
 }

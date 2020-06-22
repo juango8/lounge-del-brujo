@@ -1,3 +1,25 @@
-.mt-header{
-  margin-top: 15em;
+.mt-header {
+    margin-top: 15em;
+    margin-bottom: 10em;
+}
+
+.bg-button {
+    color: #781621;
+    border-color: #781621;
+}
+
+.bg-button:hover {
+    color: white;
+    background-color: #781621;
+}
+
+.form-control:focus {
+    border-color: #781621;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(120, 22, 33, 0.6);
+}
+
+.col-form-label {
+    font-weight: 900;
+    font-size: 17px;
+    color: #781621;
 }
