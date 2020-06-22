@@ -1,0 +1,41 @@
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  margin-top: 2em;
+  position: relative;
+  height: 0;
+}
+
+.map-responsive .iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  position: absolute;
+}
+
+.lounge{
+  border-radius: 50%;
+  width: 150px;
+  display: inline-block;
+}
+
+.vega{
+  border-radius: 50%;
+  width: 200px;
+  display: inline-block;
+}
+
+.alinear{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.alinear h2{
+  width: auto;
+}
+
+.mcenter-content {
+  margin: 2em 0;
+  text-align: center;
+}
