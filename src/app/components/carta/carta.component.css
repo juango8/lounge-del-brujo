@@ -1,0 +1,68 @@
+.logo {
+  height: 10vh;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main {
+  width: 70%;
+  border-right: 6px solid #0A0A0A;
+  padding-bottom: 5vh;
+}
+
+.sidebar {
+  width: 29%;
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 0 2em;
+}
+
+.foodcard {
+  margin: 1em;
+  width: 18rem;
+}
+
+.foodcard div a {
+  color: #F2F2F2;
+
+}
+
+.btn-lounge {
+  color: #F2F2F2;
+  background-color: #8C0E1D;
+  border-color: #781621;
+}
+
+.btn-lounge:hover {
+  color: #F2F2F2;
+  background-color: #781621;
+  /*border-color: #0062cc*/
+}
+
+#btn-final {
+  position: absolute;
+  right: 0;
+  bottom: 5vh;
+}
+
+.btn-dish {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.image-card {
+  height: auto;
+  /*width: auto;*/
+}
+
+.dish-name {
+  display: flex;
+  position: absolute;
+  right: 0;
+}
