@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+  center = {lat: -16.3856059, lng: -71.5441333};
+  zoom = 18;
+  display?: google.maps.LatLngLiteral;
 
   ngOnInit(): void {
   }

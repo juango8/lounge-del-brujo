@@ -1,9 +1,11 @@
-/*.test {*/
-/*  margin-top: 17rem !important;*/
-/*}*/
-
 p {
   margin: 1em 0;
+}
+
+.test{
+  /*margin: 5vh 0;*/
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .test2 {
@@ -11,7 +13,7 @@ p {
   margin-bottom: auto;
 }
 
-.test3{
+.background-about{
   position: relative;
   width: 100%;
   min-height: 50vh;

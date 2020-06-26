@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {APP_ROUTING} from './app.router';
 
 import {HttpClientModule} from '@angular/common/http';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 import {AppComponent} from './app.component';
 import {AboutComponent} from './components/about/about.component';
@@ -14,6 +15,7 @@ import {CategoriesComponent} from './components/categories/categories.component'
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {CartaComponent} from './components/carta/carta.component';
 import { FormComponent } from './components/form/form.component';
+import { FindUsComponent } from './components/find-us/find-us.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import { FormComponent } from './components/form/form.component';
     FooterComponent,
     CategoriesComponent,
     CartaComponent,
-    FormComponent
+    FormComponent,
+    FindUsComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
+    GoogleMapsModule,
     APP_ROUTING
   ],
   providers: [],
