@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {APP_ROUTING} from './app.router';
 
 import {HttpClientModule} from '@angular/common/http';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 import {AppComponent} from './app.component';
 import {AboutComponent} from './components/about/about.component';
@@ -32,6 +33,7 @@ import { FindUsComponent } from './components/find-us/find-us.component';
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
+    GoogleMapsModule,
     APP_ROUTING
   ],
   providers: [],
