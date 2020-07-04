@@ -29,10 +29,15 @@
     border-color: black;
     border-radius: 8px;
     box-shadow: 0 6px 18px black, inset 0 0 9px white;
+    transition: .5s;
 }
 
 .foodcard div a {
     color: #F2F2F2;
+}
+
+.foodcard:hover {
+    transform: rotateX(7deg) translateY(-6px) scale(1.05);
 }
 
 .btn-lounge {
@@ -76,6 +81,7 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+    transition: .5s;
 }
 
 .category:hover {

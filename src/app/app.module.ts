@@ -16,6 +16,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {CartaComponent} from './components/carta/carta.component';
 import { FormComponent } from './components/form/form.component';
 import { FindUsComponent } from './components/find-us/find-us.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FindUsComponent } from './components/find-us/find-us.component';
     CategoriesComponent,
     CartaComponent,
     FormComponent,
-    FindUsComponent
+    FindUsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

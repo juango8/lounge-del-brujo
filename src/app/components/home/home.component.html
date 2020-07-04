@@ -1,25 +1,80 @@
-<app-header></app-header>
-
 <div class='slider'>
+    <!-- background slide -->
     <div class='slide1'></div>
     <div class='slide2'></div>
     <div class='slide3'></div>
-    <div class="container-fluid main-container">
-
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-6 text-center">
-                <button class="animate__animated animate__fadeInLeft" routerLink="/carta" type="button">
-        DELIVERY
-      </button>
-
-            </div>
-            <div class="col-sm-12 col-md-6 text-center">
-                <button class="animate__animated animate__fadeInRight" onclick="location.href='#section2'" type="button">
-        ¡DESCUBRE!
-      </button>
-            </div>
+    <!-- end background slide -->
+    <div class="logo">
+        <!-- fire animation -->
+        <div class="fire">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-    </div>
-</div>
+        <!-- end fire animation -->
+        <!-- img logo -->
+        <div>
+            <img src="assets/img/logo.png" alt="logo">
+        </div>
+        <!-- end img logo -->
 
-<app-categories></app-categories>
+    </div>
+    <!-- introduction -->
+    <div class="text animate__animated animate__fadeInLeft">
+        Te invitamos a que des un salto hacia el universo de posibilidades, que descubras que el mundo es mucho más de lo que te han dicho que es y te aventures a vivir y soñar, libre de violencia y crueldad.
+    </div>
+    <!-- end introduction -->
+
+</div>
+<!-- button delivery -->
+<div class="box">
+    <a [routerLink]="[ '/carta'] " class="btn btn-white btn-animation-1">¡Haz tu pedido!</a>
+</div>
+<!-- end button delivery -->

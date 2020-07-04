@@ -1,72 +1,68 @@
-<app-header></app-header>
 <div class="container mt-header">
-  <h4>Datos de contacto</h4>
-  <hr>
-  <form autocomplete="off">
-    <div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nombre</label>
-        <div class="col-8">
-          <input class="form-control" type="text" placeholder="Nombre">
+    <h4>Datos de contacto</h4>
+    <hr>
+    <form autocomplete="off">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" placeholder="Nombre">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" placeholder="Apellido">
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Apellido</label>
-        <div class="col-8">
-          <input class="form-control" type="text" placeholder="Apellido">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+                <input class="form-control" type="email" placeholder="Correo electrónico">
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Correo</label>
-      <div class="col-8">
-        <input class="form-control" type="email" placeholder="Correo electrónico">
-      </div>
-    </div>
-  </form>
+    </form>
 
-  <h4>Lugar de Entrega</h4>
-  <hr>
-  <form autocomplete="off">
-    <div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nombre</label>
-        <div class="col-8">
-          <input class="form-control" type="text" placeholder="Nombre">
+    <h4>Lugar de Entrega</h4>
+    <hr>
+    <form autocomplete="off">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" placeholder="Nombre">
+                </div>
+                <google-map width="750px" height="450px" [center]="center" [zoom]="zoom">
+                </google-map>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+                    <input class="form-control" type="text" placeholder="Apellido">
+                </div>
+            </div>
         </div>
-        <google-map width="750px"
-                    height="450px"
-                    [center]="center"
-                    [zoom]="zoom">
-        </google-map>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Apellido</label>
-        <div class="col-8">
-          <input class="form-control" type="text" placeholder="Apellido">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+                <input class="form-control" type="email" placeholder="Correo electrónico">
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Correo</label>
-      <div class="col-8">
-        <input class="form-control" type="email" placeholder="Correo electrónico">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Direccion</label>
-      <div class="col-8">
-        <input class="form-control" type="test" placeholder="Direccion">
-      </div>
-    </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Direccion</label>
+            <div class="col-8">
+                <input class="form-control" type="test" placeholder="Direccion">
+            </div>
+        </div>
 
-  </form>
-  <div class="form-group row">
-    <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-5">
-      <button type="submit" class="btn btn-outline-primary btn-block bg-button">
+    </form>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-5">
+            <button type="submit" class="btn btn-outline-primary btn-block bg-button">
         Guardar
       </button>
+        </div>
     </div>
-  </div>
 </div>

@@ -1,29 +1,40 @@
 p {
-  margin: 1em 0;
+    margin: 1em 0;
 }
 
-.test{
-  /*margin: 5vh 0;*/
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+.test {
+    /*margin: 5vh 0;*/
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 .test2 {
-  margin-top: auto;
-  margin-bottom: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-.background-about{
-  position: relative;
-  width: 100%;
-  min-height: 50vh;
-  background: url(src/assets/img/about-banner.png);
-  background-size: cover;
-  display: flex;
-  align-items: center;
+.background-about {
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    background: url(src/assets/img/about-banner.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
 }
 
-img{
-  max-width: 100%;
-  margin: 1em 0;
+img {
+    max-width: 100%;
+    margin: 1em 0;
+    transition: .5s;
 }
+
+img:hover {
+    box-shadow: 0 15px 30px black, inset 0 0 9px white;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .background-about {}
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {}

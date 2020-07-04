@@ -21,6 +21,7 @@
     padding-bottom: 154px;
     text-decoration: none;
     color: white;
+    background-color: transparent;
     -o-transition: color .1s ease, background 1s ease;
     -ms-transition: color .1s ease, background 1s ease;
     -moz-transition: color .1s ease, background 1s ease;
@@ -30,9 +31,8 @@
 }
 
 .items:hover {
-    background-color: black;
+    background-image: linear-gradient( to top, rgba(0, 0, 0, 0.5), rgba(120, 22, 33, .5));
     color: rgb(151, 12, 12);
-    opacity: .7;
 }
 
 .menu {
