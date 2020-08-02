@@ -2,7 +2,59 @@
     <div class="main">
         <nav class="navbar navbar-light bg-faded justify-content-between flex-nowrap flex-row">
             <div class="container justify-content-center">
-                <img routerLink="/home" class="logo rounded d-block" src="./assets/img/logo-lounge.png" alt="">
+                <div class="fire">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                <img routerLink="/home" class="logo rounded d-block" src="assets/img/logo.png" alt="logo">
                 <ul class="nav navbar-nav flex-row justify-content-center">
                     <li *ngFor="let category of categories; let i = index" class="nav-item" routerLinkActive="active">
                         <a class="nav-link pr-3 category" (click)="setNumber(i)">{{ category.name }}</a>
@@ -30,7 +82,7 @@
     <div class="sidebar">
         <h2 class="mt-4">Mi pedido</h2>
         <ul>
-            <li *ngFor="let dish of finalOrder ">
+            <li class="buycar" *ngFor="let dish of finalOrder ">
                 <div>
                     <div>{{dish.name}}</div>
                     <div>S/{{dish.price}}</div>

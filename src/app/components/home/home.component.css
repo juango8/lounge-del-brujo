@@ -19,21 +19,21 @@
 }
 
 .slide1 {
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/slide1.png);
+    background-image: linear-gradient( to bottom, rgba(120, 22, 33, .9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url(src/assets/img/slide1.png);
     background-size: cover;
     animation: fade 15s infinite;
     -webkit-animation: fade 15s infinite;
 }
 
 .slide2 {
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/slide2.png);
+    background-image: linear-gradient( to bottom, rgba(120, 22, 33, .9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url(src/assets/img/slide2.png);
     background-size: cover;
     animation: fade2 15s infinite;
     -webkit-animation: fade2 15s infinite;
 }
 
 .slide3 {
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/slide3.png);
+    background-image: linear-gradient( to bottom, rgba(120, 22, 33, .9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url(src/assets/img/slide3.png);
     background-size: cover;
     animation: fade3 15s infinite;
     -webkit-animation: fade3 15s infinite;
@@ -130,7 +130,8 @@
 }
 
 .box a.btn {
-    font-size: 24px;
+    width: 25vw;
+    font-size: 38px;
 }
 
 .btn:link,
