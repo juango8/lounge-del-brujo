@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CantidadService } from '../../services/cantidad.service';
+
 
 @Component({
   selector: 'app-form',
@@ -6,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-
-  constructor() {
-  }
-  center = {lat: -16.3856059, lng: -71.5441333};
-  zoom = 18;
-  display?: google.maps.LatLngLiteral;
+  public cantidadDesdeService:number;
+  
+  constructor(
+    private _service: CantidadService) { }
 
   ngOnInit(): void {
+    this.cantidadDesdeService = this._service.getCantidad();
   }
 
 }

@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {ProductsByCategoryService} from '../../services/products-by-category.service';
+import { CantidadService } from '../../services/cantidad.service';
 
 @Component({
   selector: 'app-carta',
@@ -8,6 +9,7 @@ import {ProductsByCategoryService} from '../../services/products-by-category.ser
 })
 export class CartaComponent {
 
+  @Output() precioFinal: EventEmitter<number> = new EventEmitter();
   categories: any[] = [];
   baseRoot: string;
   idCategory = 0;
@@ -15,7 +17,8 @@ export class CartaComponent {
   finalPrice = 0;
   private buttonState = false;
 
-  constructor(public Categories: ProductsByCategoryService) {
+  constructor(public Categories: ProductsByCategoryService,
+              private _service:CantidadService) {
     this.Categories.getProductsCategory().subscribe((data: any) => {
       this.categories = data.categories;
       console.log('aqui', this.categories);
@@ -43,8 +46,12 @@ export class CartaComponent {
     this.finalOrder.push(order);
     this.finalPrice += test.price;
   }
+  sendCantidad(cantidad){
+    this._service.setCantidad(cantidad);
+  }
 
   getFinalPrice() {
+    this.sendCantidad(this.finalPrice);
     return this.finalPrice;
   }
 

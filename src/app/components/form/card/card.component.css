@@ -75,6 +75,7 @@ button {
     display: block;
     transition: all 0.2s ease;
     box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+    width: 100%;
 }
 
 button:hover {
@@ -139,11 +140,6 @@ button:disabled {
     transform-origin: 0px 10.2px;
     -webkit-animation: loading 2s infinite ease;
     animation: loading 2s infinite ease;
-}
-
-.payform {
-    color: white;
-    margin: .5rem;
 }
 
 @-webkit-keyframes loading {

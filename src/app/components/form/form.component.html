@@ -1,68 +1,25 @@
-<div class="container mt-header">
-    <h4>Datos de contacto</h4>
-    <hr>
-    <form autocomplete="off">
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nombre</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Nombre">
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <h1>Información de la compra</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <form>
+                <h2>Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h2>
+                <input type="text" id="name" placeholder="Nombres" required>
+                <input type="text" id="phone" placeholder="Telefono" required>
+                <input type="text" id="adress" placeholder="Dirección" required>
+                <input type="text" id="reference" placeholder="Referencia" required>
+                <div class="row">
+                    <div class="col d-flex justify-content-center alig-items-center">
+                        <a [routerLink]="'/card'"><button class="payform"> Paga con Tarjeta</button></a>
+                        <a [routerLink]="'/cash'"><button class="payform"> Paga con Efectivo</button></a>
+                        <a [routerLink]="'/yape'"><button class="payform"> Paga con Yape</button></a>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Apellido</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Apellido">
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Correo</label>
-            <div class="col-8">
-                <input class="form-control" type="email" placeholder="Correo electrónico">
-            </div>
-        </div>
-    </form>
-
-    <h4>Lugar de Entrega</h4>
-    <hr>
-    <form autocomplete="off">
-        <div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Nombre</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Nombre">
-                </div>
-                <google-map width="750px" height="450px" [center]="center" [zoom]="zoom">
-                </google-map>
-            </div>
-            <div class="form-group row">
-                <label class="col-2 col-form-label">Apellido</label>
-                <div class="col-8">
-                    <input class="form-control" type="text" placeholder="Apellido">
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Correo</label>
-            <div class="col-8">
-                <input class="form-control" type="email" placeholder="Correo electrónico">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Direccion</label>
-            <div class="col-8">
-                <input class="form-control" type="test" placeholder="Direccion">
-            </div>
-        </div>
-
-    </form>
-    <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-5">
-            <button type="submit" class="btn btn-outline-primary btn-block bg-button">
-        Guardar
-      </button>
+            </form>
         </div>
     </div>
 </div>

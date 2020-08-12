@@ -32,6 +32,11 @@ html {
     background-image: -webkit-linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4) 50%, transparent, transparent)
 }
 
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
 
 /* Exportar fuentes personalizadas, todas las fuentes estan en el archivo assets/fonts/ */
 

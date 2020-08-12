@@ -14,7 +14,7 @@ h2 {
 .wrapper {
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, .9), rgba(0, 0, 0, 1));
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
 }
 
 .main {
