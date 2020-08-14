@@ -53,8 +53,8 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Dirección</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="dirección" formControlName="adress" [class.is-invalid]="adressNoValido">
-                            <small *ngIf="adressNoValido" class="text-danger">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="dirección" formControlName="address" [class.is-invalid]="addressNoValido">
+                            <small *ngIf="addressNoValido" class="text-danger">
                                 La dirección es obligatoria
                             </small>
                         </div>
@@ -71,7 +71,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Descripción</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="ejemplo: Mayonesa adicional" formControlName="description">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="ejemplo: Mayonesa adicional" formControlName="comentary">
                         </div>
                     </div>
                 </div>

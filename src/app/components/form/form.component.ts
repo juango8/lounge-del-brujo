@@ -39,8 +39,8 @@ export class FormComponent implements OnInit {
   get emailNoValido(){
     return this.forma.get('email').invalid && this.forma.get('email').touched
   }
-  get adressNoValido(){
-    return this.forma.get('adress').invalid && this.forma.get('adress').touched
+  get addressNoValido(){
+    return this.forma.get('address').invalid && this.forma.get('address').touched
   }
   get referenceNoValido(){
     return this.forma.get('reference').invalid && this.forma.get('reference').touched
@@ -51,12 +51,12 @@ export class FormComponent implements OnInit {
       name: ['', Validators.required],
       number: ['', [Validators.required, Validators.minLength(9), Validators.pattern("^[0-9]*$")]],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
-      adress: ['', Validators.required],
+      address: ['', Validators.required],
       reference:['', Validators.required],
-      description:[''],
-      id : [''],
+      comentary:[''],
+      payment_method : [''],
       products:[''],
-      paid:[true],
+      paid:[false],
       confirmed:[false]
     });
   }
@@ -77,7 +77,7 @@ export class FormComponent implements OnInit {
     }
     else{
       this.disabled = true;
-      this.forma.value.id = this.id;
+      this.forma.value.payment_method = this.id;
       this.forma.value.products = this.productsList;
       this.data = this.forma.value;
       console.log(this.data);
