@@ -86,6 +86,10 @@ button:disabled {
     cursor: default;
 }
 
+label {
+    margin-right: 1.5rem;
+}
+
 
 /* spinner/processing state, errors */
 
@@ -142,8 +146,13 @@ button:disabled {
 }
 
 .payform {
+    border-radius: 1rem;
     color: white;
-    margin: .5rem;
+    margin: -1rem;
+}
+
+.formlink {
+    color: rgb(120, 22, 33);
 }
 
 @-webkit-keyframes loading {

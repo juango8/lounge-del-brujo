@@ -1,0 +1,29 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas: "efectivo yape stripe";
+    min-height: 100vh;
+}
+
+.efectivo {
+    grid-area: efectivo;
+    border: .5rem solid rgb(102, 101, 101);
+}
+
+.yape {
+    grid-area: yape;
+    border: .5rem solid rgb(102, 101, 101);
+}
+
+.stripe {
+    grid-area: stripe;
+    border: .5rem solid rgb(102, 101, 101);
+}
+
+.grid-title {
+    text-align: center;
+    background-color: rgb(102, 101, 101);
+    color: white;
+}

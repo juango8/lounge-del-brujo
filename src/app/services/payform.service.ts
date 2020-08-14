@@ -5,10 +5,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PayformService {
-
-  constructor( private http: HttpClient) { }
-
-  crearPago( formData:any ){
-    console.log("creando pago")
+  public productsList: Array<any>;
+  
+  setProducts(array: any) {
+    this.productsList = array;
   }
+  getProducts() {
+    return this.productsList;
+  }
+  
+  constructor( private http: HttpClient) {
+    console.log("hola mundo");
+  }
+
 }
+  

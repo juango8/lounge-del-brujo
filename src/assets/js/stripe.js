@@ -1,8 +1,8 @@
 // A reference to Stripe.js initialized with a fake API key.
 //Sign in to see examples pre-filled with your key.
 function init_plugins() {
-    var stripe = Stripe("pk_test_51HDJkuHQGNRyxfTlmJsjEMgBtZBcVV7KXGOkTBXgYT2OlM65jzFK9WEV4EmQsHQVkZgumXNxoCbgSsrDz70NlAYd00Eq4EDVm0");
 
+    var stripe = Stripe("pk_test_51HDJkuHQGNRyxfTlmJsjEMgBtZBcVV7KXGOkTBXgYT2OlM65jzFK9WEV4EmQsHQVkZgumXNxoCbgSsrDz70NlAYd00Eq4EDVm0");
     // The items the customer wants to buy
     var purchase = {
         items: [{ id: "total" }]
@@ -10,6 +10,7 @@ function init_plugins() {
 
     // Disable the button until we have Stripe set up on the page
     document.querySelector("button").disabled = true;
+    /* http://54.160.110.125:8001/api/ecommerce/payment_stripe */
     fetch("http://localhost:4242/create-payment-intent", {
             method: "POST",
             headers: {

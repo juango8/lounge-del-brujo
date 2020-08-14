@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{dish.name}}</h5>
                         <p class="card-text mb-5">{{dish.description}}</p>
-                        <a (click)="addDish(dish)" class="btn btn-block btn-dish btn-lounge">Añadir <small>S/ {{dish.price}}
+                        <a (click)="addDish(dish); addID(dish);" class="btn btn-block btn-dish btn-lounge">Añadir <small>S/ {{dish.price}}
               .00</small></a>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
     <div class="sidebar">
         <h2 class="mt-4">Mi pedido</h2>
         <ul>
-            <li class="buycar" *ngFor="let dish of finalOrder ">
+            <li class="buycar" *ngFor="let dish of getProductList() ">
                 <div>
                     <div>{{dish.name}}</div>
                     <div>S/{{dish.price}}</div>

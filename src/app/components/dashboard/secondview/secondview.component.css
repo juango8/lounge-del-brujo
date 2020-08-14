@@ -1,0 +1,19 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: "confirmados";
+    min-height: 100vh;
+}
+
+.confirmados {
+    grid-area: confirmados;
+    border: .5rem solid rgb(102, 101, 101);
+}
+
+.grid-title {
+    text-align: center;
+    background-color: rgb(102, 101, 101);
+    color: white;
+}

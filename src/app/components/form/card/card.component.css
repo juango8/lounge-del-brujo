@@ -142,6 +142,11 @@ button:disabled {
     animation: loading 2s infinite ease;
 }
 
+#submit {
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
 @-webkit-keyframes loading {
     0% {
         -webkit-transform: rotate(0deg);

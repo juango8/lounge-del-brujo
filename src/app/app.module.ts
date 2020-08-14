@@ -5,6 +5,7 @@ import {APP_ROUTING} from './app.router';
 
 import {HttpClientModule} from '@angular/common/http';
 import {GoogleMapsModule} from '@angular/google-maps';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {AboutComponent} from './components/about/about.component';
@@ -20,6 +21,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CardComponent } from './components/form/card/card.component';
 import { CashComponent } from './components/form/cash/cash.component';
 import { YapeComponent } from './components/form/yape/yape.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FirstviewComponent } from './components/dashboard/firstview/firstview.component';
+import { SecondviewComponent } from './components/dashboard/secondview/secondview.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +39,19 @@ import { YapeComponent } from './components/form/yape/yape.component';
     NavbarComponent,
     CardComponent,
     CashComponent,
-    YapeComponent
+    YapeComponent,
+    DashboardComponent,
+    FirstviewComponent,
+    SecondviewComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
     GoogleMapsModule,
-    APP_ROUTING
+    APP_ROUTING,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

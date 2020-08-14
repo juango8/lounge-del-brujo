@@ -1,0 +1,15 @@
+<div class=logo>
+
+</div>
+<div class="container-fluid">
+    <div class="main custom-control-inline">
+        <h1>Dashboard</h1>
+        <div class="main-buttons custom-control-inline">
+            <button (click)="getIdView(item.id)" class="payform" *ngFor="let item of views">
+                {{item.name}}
+              </button>
+        </div>
+    </div>
+    <app-firstview *ngIf="id==0"></app-firstview>
+    <app-secondview *ngIf="id==1"></app-secondview>
+</div>

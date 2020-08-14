@@ -6,19 +6,93 @@
     </div>
     <div class="row">
         <div class="col d-flex justify-content-center alig-items-center">
-            <form>
+            <!-- <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()>
                 <h2>Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h2>
-                <input type="text" id="name" placeholder="Nombres" required>
-                <input type="text" id="phone" placeholder="Telefono" required>
-                <input type="text" id="adress" placeholder="Dirección" required>
-                <input type="text" id="reference" placeholder="Referencia" required>
-                <div class="row">
-                    <div class="col d-flex justify-content-center alig-items-center">
-                        <a [routerLink]="'/card'"><button class="payform"> Paga con Tarjeta</button></a>
-                        <a [routerLink]="'/cash'"><button class="payform"> Paga con Efectivo</button></a>
-                        <a [routerLink]="'/yape'"><button class="payform"> Paga con Yape</button></a>
+                <input type=" text " id="name " placeholder="names " required>
+                <input type="text " id="phone " placeholder="Telefono " required>
+                <input type="text " id="adress " placeholder="Dirección " required>
+                <input type="text " id="reference " placeholder="Referencia " required>
+                <div class="row ">
+                    <div class="col d-flex justify-content-center alig-items-center " *ngFor="let item of pay ">
+                        <a></a><button class="payform " [disabled]="disabled " (click)="getIdPay(item.id) " type="submit "> {{item.pay}}</button></a>
                     </div>
                 </div>
+            </form> -->
+            <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+                <h3 *ngIf="!checker()">Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h3>
+                <h3 *ngIf="checker()">No se a seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.</h3>
+                <br>
+                <div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Nombres</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="nombres completos" formControlName="name" [class.is-invalid]="nameNoValido">
+                            <small *ngIf="nameNoValido" class="text-danger">
+                                Los nombres son obligatorios
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Teléfono</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="número de telefono" formControlName="number" [class.is-invalid]="numberNoValido">
+                            <small *ngIf="numberNoValido" class="text-danger">
+                                El número de teléfono es obligatorio
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Correo</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" id="email" type="email" placeholder="correo electrónico" formControlName="email" [class.is-invalid]="emailNoValido">
+                            <small *ngIf="emailNoValido" class="text-danger">
+                                El correo es obligatorio
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Dirección</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="dirección" formControlName="adress" [class.is-invalid]="adressNoValido">
+                            <small *ngIf="adressNoValido" class="text-danger">
+                                La dirección es obligatoria
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Referencia</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="referencia" formControlName="reference" [class.is-invalid]="referenceNoValido">
+                            <small *ngIf="referenceNoValido" class="text-danger">
+                                La referencia es obligatoria
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Descripción</label>
+                        <div class="col">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="ejemplo: Mayonesa adicional" formControlName="description">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="form-group col d-flex justify-content-center alig-items-center" *ngFor="let item of pay">
+                        <div class="input-group col">
+                            <button [disabled]="disabled || checker()" (click)="getIdPay(item.id)" type="submit" class="payform">
+                        Paga con {{item.pay}}
+                      </button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <app-card *ngIf="forma.value.id==1"></app-card>
+                <app-cash *ngIf="forma.value.id==2"></app-cash>
+                <app-yape *ngIf="forma.value.id==3"></app-yape>
+                <br>
+                <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>
+
             </form>
         </div>
     </div>
