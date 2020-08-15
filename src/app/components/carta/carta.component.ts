@@ -36,30 +36,63 @@ export class CartaComponent {
 
   addDish(test: any) {
     let num = 1;
+    let found = false;
     for (var items of this.finalOrder) {
       if(items.id == test.id){
-        num+=1;
-      }
-      else{
-        
+        found = true;
+        items.count+=1;
       }
     };
+    
+    //const test2 = JSON.stringify(order);
+
+      if(!found){
     const order = {
       id: test.id,
       name: test.name,
       price: test.price,
       count: num
     };
-    const test2 = JSON.stringify(order);
-    
+
     this.finalOrder.push(order);
+  }
+    
     this.finalPrice += test.price;
-    localStorage.setItem("finalO", JSON.stringify(this.finalOrder));
+    //localStorage.setItem("finalO", JSON.stringify(this.finalOrder));
   }
 
   addID(test: any) {
     const order = test.id;
     this.finalIds.push(order);
+
+  }
+
+  rest( dish: any) {
+
+    for (var i=0; i<this.finalOrder.length;i++) {
+      let item = this.finalOrder[i]      
+      if(item.id == dish.id){
+        item.count-=1;
+        if(item.count == 0)
+        {
+          item.count=0;
+          this.finalOrder.splice(i,1)
+        }
+        this.finalPrice -= item.price;
+      }
+    };
+    
+  }
+
+  sum( dish: any) {
+
+    for (var item of this.finalOrder) {
+      if(item.id == dish.id){
+        item.count+=1;
+        this.finalPrice += item.price;
+      }
+    };
+    
   }
   
   sendProductsList(products) {
@@ -73,7 +106,7 @@ export class CartaComponent {
   getProductList(){
     this.sendProductsList(this.finalIds);
     let finalO = JSON.parse( localStorage.getItem("finalO"));
-    return finalO;
+    return this.finalOrder;
   }
 
   getFinalPrice() {
