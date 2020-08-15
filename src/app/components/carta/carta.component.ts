@@ -35,15 +35,26 @@ export class CartaComponent {
   }
 
   addDish(test: any) {
+    let num = 1;
+    for (var items of this.finalOrder) {
+      if(items.id == test.id){
+        num+=1;
+      }
+      else{
+        
+      }
+    };
     const order = {
       id: test.id,
       name: test.name,
       price: test.price,
-      count: 1
+      count: num
     };
     const test2 = JSON.stringify(order);
+    
     this.finalOrder.push(order);
     this.finalPrice += test.price;
+    localStorage.setItem("finalO", JSON.stringify(this.finalOrder));
   }
 
   addID(test: any) {
@@ -61,7 +72,8 @@ export class CartaComponent {
 
   getProductList(){
     this.sendProductsList(this.finalIds);
-    return this.finalOrder;
+    let finalO = JSON.parse( localStorage.getItem("finalO"));
+    return finalO;
   }
 
   getFinalPrice() {
@@ -72,4 +84,10 @@ export class CartaComponent {
   buttonPast() {
     return false;
   }
+
+  obtener_localStorage(){
+    let finalO = JSON.parse( localStorage.getItem("finalO"));
+    return finalO;
+  }
+
 }

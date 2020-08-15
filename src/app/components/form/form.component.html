@@ -87,9 +87,9 @@
                     </div>
                 </div>
                 <br>
-                <app-card *ngIf="forma.value.id==1"></app-card>
-                <app-cash *ngIf="forma.value.id==2"></app-cash>
-                <app-yape *ngIf="forma.value.id==3"></app-yape>
+                <app-card *ngIf="forma.value.payment_method==1"></app-card>
+                <app-cash *ngIf="forma.value.payment_method==2"></app-cash>
+                <app-yape *ngIf="forma.value.payment_method==3"></app-yape>
                 <br>
                 <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>
 

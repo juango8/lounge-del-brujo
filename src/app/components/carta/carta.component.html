@@ -81,14 +81,13 @@
     <div class="vl"></div>
     <div class="sidebar">
         <h2 class="mt-4">Mi pedido</h2>
-        <ul>
-            <li class="buycar" *ngFor="let dish of getProductList() ">
-                <div>
-                    <div>{{dish.name}}</div>
-                    <div>S/{{dish.price}}</div>
-                </div>
-            </li>
-        </ul>
+        <div class="buycar" *ngFor="let dish of getProductList() ">
+            <button><div class="menos">-</div></button>
+            <div>{{dish.name}}</div>
+            <div>S/{{dish.price}}</div>
+            <div>{{dish.count}}</div>
+            <button><div class="mas">+</div></button>
+        </div>
         <a routerLink="/form" id="btn-final" class="btn btn-block btn-lounge">
             <div>Continuar</div>
             <div *ngIf="getFinalPrice()!= 0"><small>S/{{getFinalPrice()}}.00</small></div>
