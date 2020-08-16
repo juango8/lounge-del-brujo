@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class FormComponent implements OnInit {
   forma:FormGroup;
   disabled:boolean = false;
+  confirmed:boolean = false;
   pay:any[] = [{id:'1', pay:'Tarjeta'},{id:'2', pay:'Efectivo'},{id:'3', pay:'Yape'}];
   data:any[] = [];
   id:any = 0;
@@ -80,11 +81,16 @@ export class FormComponent implements OnInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.products = this.productsList;
       this.data = this.forma.value;
-      console.log(this.data);
-      this.http.post('http://54.160.110.125:8001/api/ecommerce/lounje/orders', this.data).subscribe(
+      /* console.log(this.data); */
+      
+    }
+ }
+
+ sendData(){
+    this.confirmed = true;
+    this.http.post('http://54.160.110.125:8001/api/ecommerce/lounje/orders', this.data).subscribe(
     (response) => console.log(response),
     (error) => console.log(error)
   )
-    }
  }
 }
