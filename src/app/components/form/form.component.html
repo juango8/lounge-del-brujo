@@ -1,26 +1,16 @@
+<app-logo-bar></app-logo-bar>
 <div class="container">
     <div class="row">
         <div class="col d-flex justify-content-center alig-items-center">
             <h1>Información de la compra</h1>
+
         </div>
     </div>
-    <div class="row">
+    <div class="row main-form">
         <div class="col d-flex justify-content-center alig-items-center">
-            <!-- <form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()>
-                <h2>Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h2>
-                <input type=" text " id="name " placeholder="names " required>
-                <input type="text " id="phone " placeholder="Telefono " required>
-                <input type="text " id="adress " placeholder="Dirección " required>
-                <input type="text " id="reference " placeholder="Referencia " required>
-                <div class="row ">
-                    <div class="col d-flex justify-content-center alig-items-center " *ngFor="let item of pay ">
-                        <a></a><button class="payform " [disabled]="disabled " (click)="getIdPay(item.id) " type="submit "> {{item.pay}}</button></a>
-                    </div>
-                </div>
-            </form> -->
             <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
                 <h3 *ngIf="!checker()">Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h3>
-                <h3 *ngIf="checker()">No se a seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.</h3>
+                <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.</h3>
                 <br>
                 <div>
                     <div class="form-group row">
@@ -81,7 +71,7 @@
                     <div class="form-group col d-flex justify-content-center alig-items-center" *ngFor="let item of pay">
                         <div class="input-group col">
                             <button [disabled]="disabled || checker()" (click)="getIdPay(item.id)" class="payform" data-toggle="modal" data-target="#exampleModal">
-                        Paga con {{item.pay}}
+                        Paga con {{item.name}}
                       </button>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,7 +89,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button [routerLink]="'/carta'" type="button" data-dismiss="modal">Cancelar</button>
-                                            <button (click)="sendData()" type="submit">Confirmar</button>
+                                            <button data-dismiss="modal" (click)="sendData()" type="submit">Confirmar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -109,9 +99,9 @@
                 </div>
 
                 <br>
-                <app-card *ngIf="forma.value.payment_method==1 && confirmed"></app-card>
-                <app-cash *ngIf="forma.value.payment_method==2 && confirmed"></app-cash>
-                <app-yape *ngIf="forma.value.payment_method==3 && confirmed"></app-yape>
+                <app-card *ngIf="forma.value.payment_method==3 && confirmed"></app-card>
+                <app-cash *ngIf="forma.value.payment_method==1 && confirmed"></app-cash>
+                <app-yape *ngIf="forma.value.payment_method==2 && confirmed"></app-yape>
                 <br>
                 <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>
 

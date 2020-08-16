@@ -24,6 +24,7 @@ import { YapeComponent } from './components/form/yape/yape.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FirstviewComponent } from './components/dashboard/firstview/firstview.component';
 import { SecondviewComponent } from './components/dashboard/secondview/secondview.component';
+import { LogoBarComponent } from './shared/logo-bar/logo-bar.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SecondviewComponent } from './components/dashboard/secondview/secondvie
     YapeComponent,
     DashboardComponent,
     FirstviewComponent,
-    SecondviewComponent
+    SecondviewComponent,
+    LogoBarComponent
   ],
   imports: [
     BrowserModule,

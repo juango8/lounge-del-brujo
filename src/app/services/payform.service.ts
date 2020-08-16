@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PayformService {
   public productsList: Array<any>;
+  public baseRoot = 'http://54.160.110.125:8001/api';
+  private apiPayId = this.baseRoot + '/ecommerce/payment_methods';
+  categories: any[] = [];
   
   setProducts(array: any) {
     this.productsList = array;
@@ -14,9 +17,10 @@ export class PayformService {
     return this.productsList;
   }
   
-  constructor( private http: HttpClient) {
-    console.log("hola mundo");
-  }
+  constructor( private http: HttpClient) { }
 
+  getPayId() {
+    return this.http.get(this.apiPayId);
+  }
 }
   

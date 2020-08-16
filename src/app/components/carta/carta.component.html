@@ -59,7 +59,35 @@
                     <li *ngFor="let category of categories; let i = index" class="nav-item" routerLinkActive="active">
                         <a class="nav-link pr-3 category" (click)="setNumber(i)">{{ category.name }}</a>
                     </li>
+
                 </ul>
+                <div class="buycar-responsive">
+                    <button routerLink="/form" class="btn btn-block btn-lounge"> Continuar <small *ngIf="getFinalPrice()!= 0">S/{{getFinalPrice()}}.00</small></button>
+                    <button class="btn btn-block btn-lounge" data-toggle="modal" data-target="#exampleModal">Carrito de compras</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Lista de productos</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body" *ngFor="let dish of getProductList()">
+                                    <div class="btn-group col d-flex justify-content-center alig-items-center" role="group" aria-label="Basic example">
+                                        <button (click)="rest(dish);" type="button" class="btn btn-lounge">-</button>
+                                        <button type="button" class="btn btn-lounge-b">{{dish.name}} <br>X{{dish.count}}</button>
+                                        <button (click)="sum(dish);" type="button" class="btn btn-lounge">+</button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button data-dismiss="modal" type="submit">Ok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </nav>
         <hr>
@@ -71,7 +99,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{dish.name}}</h5>
                         <p class="card-text mb-5">{{dish.description}}</p>
-                        <a (click)="addDish(dish); addID(dish);" class="btn btn-block btn-dish btn-lounge">Añadir <small>S/ {{dish.price}}
+                        <a (click)="addDish(dish); addProducts(dish);" class="btn btn-block btn-dish btn-lounge">Añadir <small>S/ {{dish.price}}
               .00</small></a>
                     </div>
                 </div>
@@ -81,12 +109,13 @@
     <div class="vl"></div>
     <div class="sidebar">
         <h2 class="mt-4">Mi pedido</h2>
+
         <div class="buycar" *ngFor="let dish of getProductList() ">
-            <button (click)="rest(dish);" ><div class="menos">-</div></button>
-            <div>{{dish.name}}</div>
-            <div>S/{{dish.price}}</div>
-            <div>{{dish.count}}</div>
-            <button (click)="sum(dish);"><div class="mas">+</div></button>
+            <div class="btn-group col d-flex justify-content-center alig-items-center" role="group" aria-label="Basic example">
+                <button (click)="rest(dish);" type="button" class="btn btn-lounge">-</button>
+                <button type="button" class="btn btn-lounge-b">{{dish.name}} <br>X{{dish.count}}</button>
+                <button (click)="sum(dish);" type="button" class="btn btn-lounge">+</button>
+            </div>
         </div>
         <a routerLink="/form" id="btn-final" class="btn btn-block btn-lounge">
             <div>Continuar</div>

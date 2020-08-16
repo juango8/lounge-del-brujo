@@ -96,7 +96,7 @@
 }
 
 .logo img {
-    width: 25vw;
+    width: 20%;
     height: auto;
 }
 
@@ -124,7 +124,7 @@
 /* button style */
 
 .box {
-    margin-top: 5vh;
+    margin-top: 1vh;
     position: relative;
     font-family: 'Warpaint';
 }
@@ -219,12 +219,12 @@
 
 .fire {
     transform: translate(-50%, -0%);
-    font-size: 24px;
+    font-size: 18px;
     filter: blur(0.02em);
     -webkit-filter: blur(0.02em);
-    margin-top: 7%;
+    margin-top: 5%;
     margin-left: 50%;
-    width: 20vw;
+    width: 15vw;
     height: 40%;
     position: absolute;
     z-index: -1;
@@ -524,10 +524,11 @@
         font-size: 25px;
     }
     .box a.btn {
-        font-size: 15px;
+        font-size: 30px;
+        width: 70vw;
     }
     .fire {
-        font-size: 8px;
+        font-size: 5px;
     }
 }
 

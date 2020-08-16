@@ -13,7 +13,7 @@ export class CartaComponent {
   baseRoot: string;
   idCategory = 0;
   finalOrder: any[] = [];
-  finalIds: any[]= [];
+  finalProducts: any[]= [];
   finalPrice = 0;
   private buttonState = false;
 
@@ -56,15 +56,13 @@ export class CartaComponent {
 
     this.finalOrder.push(order);
   }
-    
-    this.finalPrice += test.price;
+  this.finalPrice += test.price;
     //localStorage.setItem("finalO", JSON.stringify(this.finalOrder));
   }
 
-  addID(test: any) {
-    const order = test.id;
-    this.finalIds.push(order);
-
+  addProducts(test: any) {
+    /* const order = test.id;
+    this.finalIds.push(order); */
   }
 
   rest( dish: any) {
@@ -104,8 +102,7 @@ export class CartaComponent {
   }
 
   getProductList(){
-    this.sendProductsList(this.finalIds);
-    let finalO = JSON.parse( localStorage.getItem("finalO"));
+    this.sendProductsList(this.finalOrder);
     return this.finalOrder;
   }
 

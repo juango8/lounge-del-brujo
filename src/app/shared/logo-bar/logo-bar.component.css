@@ -1,161 +1,45 @@
-.logo {
-    height: 10vh;
-    z-index: 1;
-}
-
-h2 {
-    color: white !important;
-}
-
-.buycar {
-    color: white;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: space-between;
-    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
-}
-
-.main {
-    width: 70%;
-    border-right: 6px solid white;
-    padding-bottom: 5vh;
-}
-
-.sidebar {
-    width: 30%;
-    height: 100vh;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    padding: 0 2em;
-}
-
-.buycar-responsive {
-    visibility: hidden;
-    position: absolute;
-}
-
-.foodcard {
-    margin: 1em;
-    width: 18rem;
-    border: 4px solid;
-    border-color: black;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px black, inset 0 0 9px white;
-    transition: .5s;
-}
-
-.foodcard div a {
-    color: #F2F2F2;
-}
-
-.foodcard:hover {
-    transform: rotateX(7deg) translateY(-6px) scale(1.05);
-}
-
-.btn-lounge {
-    color: #F2F2F2;
-    background-color: #8C0E1D;
-    border-color: #781621;
-}
-
-.btn-lounge-b {
-    color: #F2F2F2;
+.logo-bar {
     background-color: black;
-    border-color: black;
-    width: 15rem;
-    cursor: default !important;
+    width: 100%;
+    height: 5rem;
+    color: white;
+    z-index: -2;
 }
 
-.btn-lounge:hover {
-    color: #F2F2F2;
-    background-color: #781621;
-    /*border-color: #0062cc*/
-}
-
-#btn-final {
-    position: fixed;
-    width: 30%;
-    right: 0;
-    bottom: 5vh;
-}
-
-.btn-dish {
+.logo {
+    top: .5%;
+    left: 47%;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    /* top: 10vh;
+    left: 50vw;
+    margin-left: -12.5vw;
+    z-index: 10; */
+    z-index: 10;
 }
 
-.image-card {
+.logo img {
+    width: 10%;
     height: auto;
-    margin-top: 10px;
-    /*width: auto;*/
 }
 
-.dish-name {
-    display: flex;
-    position: absolute;
-    right: 0;
-}
-
-.category {
-    color: white !important;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .5s;
-}
-
-hr {
-    background-color: white;
-}
-
-.category:hover {
-    color: #781621 !important;
-}
-
-.category:active {
-    color: #781621 !important;
-}
-
-button {
-    background: rgb(120, 22, 33);
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    border-radius: 0 0 4px 4px;
-    border: 0;
-    padding: 12px 16px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: block;
-    transition: all 0.2s ease;
-    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-}
-
-button:hover {
-    filter: contrast(115%);
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: default;
+.logo-bar .logo .logo-img img {
+    z-index: 10;
 }
 
 
 /* fire animations */
 
 .fire {
+    transform: translate(-50%, -0%);
     font-size: 5px;
     filter: blur(0.02em);
     -webkit-filter: blur(0.02em);
-    margin-top: -14.8%;
-    margin-left: 0%;
-    width: 5vw;
+    margin-top: 2%;
+    margin-left: 5%;
+    width: 5%;
     height: 40%;
     position: absolute;
+    z-index: -1;
 }
 
 .particle {
@@ -434,42 +318,33 @@ button:disabled {
     }
 }
 
+
+/* responsive */
+
 @media only screen and (max-device-width: 480px) {
+    .logo img {
+        width: 30%;
+    }
+    .logo {
+        top: .5%;
+        left: 40%;
+    }
     .fire {
-        margin-top: -140%;
-    }
-    .sidebar {
-        visibility: hidden;
-        width: 0%;
-        padding: 0 0em;
-    }
-    .main {
-        width: 100%;
-        padding-bottom: 5vh;
-        border-right: 6px solid transparent;
-    }
-    .buycar-responsive {
-        visibility: visible;
-        position: relative;
+        font-size: 4px;
+        margin-left: 15%;
+        width: 15%;
+        margin-top: 5%;
     }
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
+    .logo img {
+        width: 15%;
+    }
     .fire {
-        margin-top: -35%;
-    }
-    .sidebar {
-        visibility: hidden;
-        width: 0%;
-        padding: 0 0em;
-    }
-    .main {
-        width: 100%;
-        padding-bottom: 5vh;
-        border-right: 6px solid transparent;
-    }
-    .buycar-responsive {
-        visibility: visible;
-        position: relative;
+        font-size: 5px;
+        margin-left: 8%;
+        width: 8%;
+        margin-top: 3%;
     }
 }

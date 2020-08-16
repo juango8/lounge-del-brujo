@@ -184,4 +184,20 @@ label {
 }
 
 
-/* MODAL */
+/* responsive */
+
+@media only screen and (max-device-width: 480px) {
+    form {
+        width: 30vw;
+        min-width: 100%;
+    }
+    label {
+        margin-right: 2.5rem;
+    }
+    .container {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {}

@@ -13,10 +13,11 @@ export class FormComponent implements OnInit {
   forma:FormGroup;
   disabled:boolean = false;
   confirmed:boolean = false;
-  pay:any[] = [{id:'1', pay:'Tarjeta'},{id:'2', pay:'Efectivo'},{id:'3', pay:'Yape'}];
   data:any[] = [];
   id:any = 0;
-
+  products:any[]=[];
+  
+  public pay:any;
   public cantidadDesdeService:number;
   public productsList: Array<any>;
   constructor(
@@ -30,6 +31,9 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.cantidadDesdeService = this._service.getCantidad();
     this.productsList = this._service2.getProducts();
+    this._service2.getPayId().subscribe((data: any) => {
+      this.pay = data;
+    });
   }
   get nameNoValido(){
     return this.forma.get('name').invalid && this.forma.get('name').touched
@@ -56,7 +60,7 @@ export class FormComponent implements OnInit {
       reference:['', Validators.required],
       comentary:[''],
       payment_method : [''],
-      products:[''],
+      details:[''],
       paid:[false],
       confirmed:[false]
     });
@@ -64,6 +68,19 @@ export class FormComponent implements OnInit {
 
   getIdPay(id:any){
     this.id = id;
+  }
+
+  getProductsDesdeService(){
+    for (let i = 0; i < this.productsList.length; i++) {
+      const order = {
+        product : this.productsList[i].id,
+        quantity: this.productsList[i].count
+      }
+      /* console.log(order); */
+      this.products.push(order);
+    }
+/*     console.log(this.products); */
+    return this.products;
   }
 
   checker(){
@@ -79,13 +96,13 @@ export class FormComponent implements OnInit {
     else{
       this.disabled = true;
       this.forma.value.payment_method = this.id;
-      this.forma.value.products = this.productsList;
+      this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
       /* console.log(this.data); */
       
     }
  }
-
+ 
  sendData(){
     this.confirmed = true;
     this.http.post('http://54.160.110.125:8001/api/ecommerce/lounje/orders', this.data).subscribe(
@@ -93,4 +110,6 @@ export class FormComponent implements OnInit {
     (error) => console.log(error)
   )
  }
+
+
 }
