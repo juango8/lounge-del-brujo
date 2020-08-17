@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PayformService {
   public productsList: Array<any>;
-  public baseRoot = 'http://54.160.110.125:8001/api';
+  public baseRoot = 'http://54.160.110.125:8001';
   private apiPayId = this.baseRoot + '/ecommerce/payment_methods';
   categories: any[] = [];
   

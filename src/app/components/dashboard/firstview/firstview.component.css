@@ -27,3 +27,44 @@
     background-color: rgb(102, 101, 101);
     color: white;
 }
+
+.order {
+    border: .1rem solid rgb(120, 22, 33);
+}
+
+h6 {
+    margin: .5rem;
+}
+
+button {
+    height: auto;
+    background: rgb(120, 22, 33);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    border-radius: 0 0 4px 4px;
+    border: 0;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    transition: all 0.2s ease;
+    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+}
+
+.btn-service {
+    width: 10rem;
+    margin: 1rem;
+}
+
+.green {
+    background: rgb(22, 155, 22);
+}
+
+.red {
+    background: red;
+}
+
+button:hover {
+    filter: contrast(115%);
+}

@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProductsByCategoryService {
 
-  public baseRoot = 'http://54.160.110.125:8001/api';
+  public baseRoot = 'http://54.160.110.125:8001';
   private apiCategories = this.baseRoot + '/lounje/products/';
   categories: any[] = [];
 

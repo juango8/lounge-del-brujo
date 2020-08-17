@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard.service';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-firstview',
@@ -11,10 +11,17 @@ export class FirstviewComponent implements OnInit {
   public ordersEfectivo:any;
   public ordersYape:any;
   public ordersStripe:any;
+  paidState:boolean = false;
+  confirmedState:boolean = false;
   test: any[] = [];
+  toggle = true;
+  status = 'Enable'; 
+  paid:any;
+  confirmed:any;
 
   constructor(
-    private _dashboardService:DashboardService
+    private _dashboardService:DashboardService,
+    private http: HttpClient
   ) {
     this._dashboardService.getDasboard().subscribe((data: any) => {
       this.test = data.payment_methods;
@@ -22,17 +29,48 @@ export class FirstviewComponent implements OnInit {
       this.ordersYape = data.payment_methods[1];
       this.ordersStripe = data.payment_methods[2];
     });
-    /* this.ordersEfectivo = this._dashboardService.getOrdersEfectivo();
-    this.ordersYape = this._dashboardService.getOrdersYape();
-    this.ordersStripe = this._dashboardService.getOrdersStripe();
-    this.test = this._dashboardService.getDasboard();
-    console.log(this.ordersEfectivo);
-    console.log(this.ordersStripe);
-    console.log(this.test); */
    }
 
   ngOnInit(): void {
     
   }
 
+  updatePaid(value:any){
+    this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/paid/'+value, this.paid ).subscribe(
+    (response) => console.log(response),
+    (error) => console.log(error.status),
+  )
+ }
+
+ updateConfirmed(value:any){
+  this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/confirmed/'+value, this.confirmed ).subscribe(
+  (response) => console.log(response),
+  (error) => console.log(error.status),
+)
+}
+
+  setPaidState(value:boolean, id:number){
+    this.paidState = !value;
+    const update = {
+      paid : this.paidState
+    }
+    this.paid = update;
+    this.updatePaid(id);
+    console.log(this.paid);
+  }
+
+  setconfirmedState(value:boolean, id:number){
+    this.confirmedState = !value;
+    const update = {
+      confirmed : this.confirmedState
+    }
+    this.confirmed = update;
+    this.updateConfirmed(id);
+    console.log(this.confirmed);
+  }
+  
+  enableDisableRule() {
+      this.toggle = !this.toggle;
+      this.status = this.toggle ? 'Enable' : 'Disable';
+  }
 }

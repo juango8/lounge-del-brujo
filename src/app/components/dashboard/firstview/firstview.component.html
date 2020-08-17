@@ -2,19 +2,195 @@
     <div class="efectivo">
         <h2 class="grid-title">{{ordersEfectivo.name | uppercase }}</h2>
         <div *ngFor="let item of ordersEfectivo.items">
-            <h5>{{item}}</h5>
+            <!-- template -->
+            <div class="order align-items-start">
+                <div class="row">
+                    <div class="col-6 text">
+                        <h6>{{item.name}}</h6>
+                        <h6>{{item.number}}</h6>
+                        <h6>{{item.email}}</h6>
+                        <h6>{{item.address}}</h6>
+                        <h6>{{item.reference}}</h6>
+                        <h6>{{item.comentary}}</h6>
+
+                    </div>
+                    <div class="col-6">
+                        <button class="btn-service" data-toggle="modal" data-target="#pagadoModal">>PAGADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="pagadoModalLabel">PAGADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmadoModalLabel">CONFIRMADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="yape">
         <h2 class="grid-title">{{ordersYape.name | uppercase }}</h2>
         <div *ngFor="let item of ordersYape.items">
-            <h5>{{item}}</h5>
+            <!-- template -->
+            <div class="order align-items-start">
+                <div class="row">
+                    <div class="col-6 text">
+                        <h6>{{item.name}}</h6>
+                        <h6>{{item.number}}</h6>
+                        <h6>{{item.email}}</h6>
+                        <h6>{{item.address}}</h6>
+                        <h6>{{item.reference}}</h6>
+                        <h6>{{item.comentary}}</h6>
+                        <h6>{{ item.paid }}</h6>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn-ok btn-service" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="pagadoModalLabel">PAGADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmadoModalLabel">CONFIRMADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="stripe">
         <h2 class="grid-title">{{ordersStripe.name | uppercase }}</h2>
         <div *ngFor="let item of ordersStripe.items">
-            <h5>{{item}}</h5>
+            <!-- template -->
+            <div class="order align-items-start">
+                <div class="row">
+                    <div class="col-6 text">
+                        <h6>{{item.name}}</h6>
+                        <h6>{{item.number}}</h6>
+                        <h6>{{item.email}}</h6>
+                        <h6>{{item.address}}</h6>
+                        <h6>{{item.reference}}</h6>
+                        <h6>{{item.comentary}}</h6>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn-ok btn-service" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="pagadoModalLabel">PAGADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="confirmadoModalLabel">CONFIRMADO</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Desea confirmar el pedido?
+                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -5,8 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DashboardService {
-  public baseRoot = 'http://54.160.110.125:8001/api';
+  public baseRoot = 'http://54.160.110.125:8001';
   private apiDashboard = this.baseRoot + '/ecommerce/lounje/orders/dashboard';
+  private apiConfirmed = this.baseRoot + '/ecommerce/lounje/orders/confirmed';
+
   ordersYape: any[] = [];
   ordersEfectivo: any[] = [];
   ordersStripe: any[] = [];
@@ -18,6 +20,10 @@ export class DashboardService {
 
   getDasboard(){
     return this.http.get(this.apiDashboard);
+  }
+
+  getConfirmadas(){
+    return this.http.get(this.apiConfirmed);
   }
 
   getOrdersYape() {

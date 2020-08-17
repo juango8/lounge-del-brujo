@@ -105,11 +105,9 @@ export class FormComponent implements OnInit {
  
  sendData(){
     this.confirmed = true;
-    this.http.post('http://54.160.110.125:8001/api/ecommerce/lounje/orders', this.data).subscribe(
+    this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
     (response) => console.log(response),
-    (error) => console.log(error)
+    (error) => console.log(error.status),
   )
  }
-
-
 }
