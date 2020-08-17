@@ -14,10 +14,9 @@ export class FirstviewComponent implements OnInit {
   paidState:boolean = false;
   confirmedState:boolean = false;
   test: any[] = [];
-  toggle = true;
-  status = 'Enable'; 
   paid:any;
   confirmed:any;
+  myId:number;
 
   constructor(
     private _dashboardService:DashboardService,
@@ -55,7 +54,9 @@ export class FirstviewComponent implements OnInit {
       paid : this.paidState
     }
     this.paid = update;
-    this.updatePaid(id);
+    this.myId = id;
+    this.updatePaid(this.myId);
+    console.log(this.myId);
     console.log(this.paid);
   }
 
@@ -65,12 +66,9 @@ export class FirstviewComponent implements OnInit {
       confirmed : this.confirmedState
     }
     this.confirmed = update;
-    this.updateConfirmed(id);
+    this.myId = id;
+    this.updateConfirmed(this.myId);
+    console.log(this.myId);
     console.log(this.confirmed);
-  }
-  
-  enableDisableRule() {
-      this.toggle = !this.toggle;
-      this.status = this.toggle ? 'Enable' : 'Disable';
   }
 }
