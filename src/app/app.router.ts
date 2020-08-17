@@ -5,6 +5,7 @@ import {CartaComponent} from './components/carta/carta.component';
 import {FormComponent} from './components/form/form.component';
 import {FindUsComponent} from './components/find-us/find-us.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const APP_ROUTES: Routes = [
@@ -14,6 +15,7 @@ const APP_ROUTES: Routes = [
   { path: 'carta', component: CartaComponent},
   { path: 'form', component: FormComponent,},
   { path: 'dashboard', component: DashboardComponent,},
+  { path: 'login', component: LoginComponent,},
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -20,6 +20,7 @@ export class FirstviewComponent implements OnInit {
   confirmed:any;
   myId:number;
   subscription: Subscription;
+  headers = new HttpHeaders();
 
   constructor(
     private _dashboardService:DashboardService,
@@ -31,21 +32,24 @@ export class FirstviewComponent implements OnInit {
       this.ordersYape = data.payment_methods[1];
       this.ordersStripe = data.payment_methods[2];
     });
-   }
+    this.headers=this.headers.set('content-type', 'application/json')
+    this.headers=this.headers.set('Authorization', `Token ${localStorage.getItem('token')}`)
+    this.subscribeDataInterval(); 
+  }
 
   ngOnInit(): void {
     
   }
 
   updatePaid(value:any){
-    this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/paid/'+value, this.paid ).subscribe(
+    this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/paid/'+value, this.paid,{ 'headers': this.headers } ).subscribe(
     (response) => console.log(response),
     (error) => console.log(error.status),
   )
  }
 
  updateConfirmed(value:any){
-  this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/confirmed/'+value, this.confirmed ).subscribe(
+  this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/confirmed/'+value, this.confirmed,{ 'headers': this.headers } ).subscribe(
   (response) => console.log(response),
   (error) => console.log(error.status),
 )

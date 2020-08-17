@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  views:any[] = [{id:'0', name:'no confirmados'},{id:'1',name:'confirmados'}];
+  views:any[] = [{id:'0', name:'DASHBOARD'},{id:'1',name:'confirmados'}];
   id:any = 0;
-  constructor() { }
+  constructor(private _usuarioService: UsuarioService,
+              private router:Router) { }
+
+  logout(){
+    this._usuarioService.logout();
+    this.router.navigateByUrl('/login');
+  }
 
   ngOnInit(): void {
   }

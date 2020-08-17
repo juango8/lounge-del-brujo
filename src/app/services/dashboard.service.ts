@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,18 @@ export class DashboardService {
   ordersEfectivo: any[] = [];
   ordersStripe: any[] = [];
   dashboard:any[] = [];
-
+  headers = new HttpHeaders();
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    
+    this.headers=this.headers.set('content-type', 'application/json')
+    this.headers=this.headers.set('Authorization', `Token ${localStorage.getItem('token')}`)
+    console.log(this.headers); 
+   }
 
   getDasboard(){
-    return this.http.get(this.apiDashboard);
+    return this.http.get(this.apiDashboard,{ 'headers': this.headers });
   }
 
   getConfirmadas(){

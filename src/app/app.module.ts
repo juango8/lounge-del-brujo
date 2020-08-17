@@ -25,6 +25,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FirstviewComponent } from './components/dashboard/firstview/firstview.component';
 import { SecondviewComponent } from './components/dashboard/secondview/secondview.component';
 import { LogoBarComponent } from './shared/logo-bar/logo-bar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LogoBarComponent } from './shared/logo-bar/logo-bar.component';
     DashboardComponent,
     FirstviewComponent,
     SecondviewComponent,
-    LogoBarComponent
+    LogoBarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

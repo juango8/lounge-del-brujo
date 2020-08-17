@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <h1>Identificate</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="formLogin()">
+                <div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">id</label>
+                        <div class="col-8">
+                            <input class="form-control" formControlName="username" [class.is-invalid]="idNoValido" type="text" placeholder="">
+                            <small *ngIf="idNoValido" class="text-danger">
+                                El id es obligatorio
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">password</label>
+                    <div class="col-md-8">
+                        <input class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido" type="password" placeholder="">
+                        <small *ngIf="passwordNoValido" class="text-danger">
+                            La contraseña es obligatoria
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">&nbsp;</label>
+                    <div class="input-group col-md-8">
+                        <button type="submit" class="btn btn-outline-primary">
+                            Ingresar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

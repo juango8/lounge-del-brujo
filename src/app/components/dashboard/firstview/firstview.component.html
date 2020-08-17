@@ -12,7 +12,7 @@
                         <h6>{{item.address}}</h6>
                         <h6>{{item.reference}}</h6>
                         <h6>{{item.comentary}}</h6>
-
+                        <h5>{{item.date | date:'shortTime' }}</h5>
                     </div>
                     <div class="col-6">
                         <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#stripePagadoModal">>PAGADO</button>
@@ -32,7 +32,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
                                     </div>
                                 </div>
@@ -79,9 +79,7 @@
                         <h6>{{item.address}}</h6>
                         <h6>{{item.reference}}</h6>
                         <h6>{{item.comentary}}</h6>
-                        <h6>{{item.id}}</h6>
-                        <h6>confirmed {{item.confirmed}}</h6>
-                        <h6>paid {{item.paid}}</h6>
+                        <h5>{{item.date | date:'shortTime' }}</h5>
                     </div>
                     <div class="col-6">
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
@@ -101,7 +99,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
@@ -124,7 +122,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
@@ -148,9 +146,7 @@
                         <h6>{{item.address}}</h6>
                         <h6>{{item.reference}}</h6>
                         <h6>{{item.comentary}}</h6>
-                        <h6>{{item.id}}</h6>
-                        <h6>confirmed {{item.confirmed}}</h6>
-                        <h6>paid {{item.paid}}</h6>
+                        <h5>{{item.date | date:'shortTime' }}</h5>
                     </div>
                     <div class="col-6">
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
@@ -170,7 +166,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
@@ -193,7 +189,7 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
                                         <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>

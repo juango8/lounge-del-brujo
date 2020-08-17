@@ -7,6 +7,10 @@
     right: 0;
 }
 
+.logout {
+    margin-left: 3rem;
+}
+
 .logo {
     background-color: black;
     width: 100%;

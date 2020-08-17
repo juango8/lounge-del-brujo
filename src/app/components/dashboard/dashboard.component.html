@@ -4,7 +4,10 @@
         <h1>Dashboard</h1>
         <div class="main-buttons custom-control-inline">
             <button (click)="getIdView(item.id)" class="payform" *ngFor="let item of views">
-                {{item.name}}
+                {{item.name | uppercase}}
+              </button>
+            <button (click)="logout()" class="payform logout">
+                LOGOUT
               </button>
         </div>
     </div>
