@@ -15,7 +15,8 @@
 
                     </div>
                     <div class="col-6">
-                        <button class="btn-service" data-toggle="modal" data-target="#pagadoModal">>PAGADO</button>
+                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#pagadoModal">>PAGADO</button>
+                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#pagadoModal">>PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -37,7 +38,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -77,10 +79,10 @@
                         <h6>{{item.address}}</h6>
                         <h6>{{item.reference}}</h6>
                         <h6>{{item.comentary}}</h6>
-                        <h6>{{ item.paid }}</h6>
                     </div>
                     <div class="col-6">
-                        <button class="btn-ok btn-service" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -102,7 +104,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -142,9 +145,13 @@
                         <h6>{{item.address}}</h6>
                         <h6>{{item.reference}}</h6>
                         <h6>{{item.comentary}}</h6>
+                        <h6>{{item.id}}</h6>
+                        <h6>{{item.confirmed}}</h6>
+                        <h6>{{item.paid}}</h6>
                     </div>
                     <div class="col-6">
-                        <button class="btn-ok btn-service" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
+                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#pagadoModal">PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="pagadoModal" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -166,7 +173,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-service" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
+                        <button *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" data-target="#confirmadoModal">CONFIRMADO</button>
                         <!-- Modal -->
                         <div class="modal fade" id="confirmadoModal" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
