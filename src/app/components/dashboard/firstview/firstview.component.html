@@ -84,8 +84,8 @@
                         <h6>paid {{item.paid}}</h6>
                     </div>
                     <div class="col-6">
-                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
-                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="yapePagadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -102,13 +102,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-dismiss="modal">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <button *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
                         <!-- Modal -->
                         <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="yapeConfirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-dismiss="modal">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                         <h6>paid {{item.paid}}</h6>
                     </div>
                     <div class="col-6">
-                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
-                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="efectivoPagadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -171,13 +171,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-dismiss="modal">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <button *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
                         <!-- Modal -->
                         <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="efectivoConfirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" data-dismiss="modal">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
