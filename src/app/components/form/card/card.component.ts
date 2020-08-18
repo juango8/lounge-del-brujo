@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CantidadService } from '../../../services/cantidad.service';
 import { PayformService } from '../../../services/payform.service';
 
-declare function init_plugins();
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -133,7 +132,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.cantidadDesdeService = this._service.getCantidad();
-    init_plugins();
   }
 
 }

@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
+  finalOrder:any[] = [];
   
   public pay:any;
   public cantidadDesdeService:number;
@@ -107,11 +108,17 @@ export class FormComponent implements OnInit {
  }
  
  sendData(){ 
-    this.sendOrder(this.data);
     this.confirmed = true;
     this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
-    (response) => console.log(response),
+    (response:any) => {
+      const order = {
+        id : response.id,
+        email : response.email
+      }
+      this.finalOrder.push(order);
+    },
     (error) => console.log(error.status),
   )
+  this.sendOrder(this.finalOrder);
  }
 }

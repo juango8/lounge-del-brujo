@@ -20,7 +20,6 @@ export class DashboardService {
     
     this.headers=this.headers.set('content-type', 'application/json')
     this.headers=this.headers.set('Authorization', `Token ${localStorage.getItem('token')}`)
-    console.log(this.headers); 
    }
 
   getDasboard(){
