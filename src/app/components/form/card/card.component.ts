@@ -20,7 +20,7 @@ export class CardComponent implements OnInit {
     // Disable the button until we have Stripe set up on the page
     document.querySelector("button").disabled = true;
     /* http://54.160.110.125:8001/api/ecommerce/payment_stripe */
-    fetch("http://54.160.110.125:8001/api/ecommerce/payment_stripe", {
+    fetch("http://54.160.110.125:8001/ecommerce/payment_stripe", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
