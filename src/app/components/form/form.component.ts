@@ -11,22 +11,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormComponent implements OnInit {
   forma:FormGroup;
+  order:FormGroup;
   disabled:boolean = false;
   confirmed:boolean = false;
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
-  finalOrder:any[] = [];
-  
+
   public pay:any;
   public cantidadDesdeService:number;
   public productsList: Array<any>;
+  public finalOrder: Array<any>;
   constructor(
     private http: HttpClient,
     private _service: CantidadService,
     private _service2: PayformService,
     private fb: FormBuilder) {
       this.crearFormulario();
+      this.orderFormulario();
      }
 
   ngOnInit(): void {
@@ -64,6 +66,13 @@ export class FormComponent implements OnInit {
       details:[''],
       paid:[false],
       confirmed:[false]
+    });
+  }
+
+  orderFormulario(){
+    this.order = this.fb.group({
+      id: [''],
+      email:['']
     });
   }
 
@@ -110,15 +119,11 @@ export class FormComponent implements OnInit {
  sendData(){ 
     this.confirmed = true;
     this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
-    (response:any) => {
-      const order = {
-        id : response.id,
-        email : response.email
-      }
-      this.finalOrder.push(order);
-    },
+    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;}
+    /* this.order.value.id = response.id;
+    this.order.value.email = response.email; */,
     (error) => console.log(error.status),
   )
-  this.sendOrder(this.finalOrder);
+  this.sendOrder(this.order.value);
  }
 }
