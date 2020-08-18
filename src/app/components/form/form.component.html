@@ -68,11 +68,8 @@
 
                 <br>
                 <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
-                    <button [disabled]="disabled || checker()" (click)="getIdPay(3);" class="payform" type="submit">
-                        Paga con Tarjeta
-                      </button>
                     <div *ngFor="let item of pay">
-                        <div *ngIf="item.id!=3">
+                        <div>
                             <button [disabled]="disabled || checker()" (click)="getIdPay(item.id)" class="payform" data-toggle="modal" data-target="#exampleModal">
                         Paga con {{item.name}}
                       </button>
@@ -101,7 +98,7 @@
                     </div>
                 </div>
                 <br>
-                <app-card *ngIf="forma.value.payment_method==3"></app-card>
+                <app-card *ngIf="forma.value.payment_method==3 && confirmed"></app-card>
                 <app-cash *ngIf="forma.value.payment_method==1 && confirmed"></app-cash>
                 <app-yape *ngIf="forma.value.payment_method==2 && confirmed"></app-yape>
                 <br>
