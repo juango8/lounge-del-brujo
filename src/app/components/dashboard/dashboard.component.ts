@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  views:any[] = [{id:'0', name:'DASHBOARD'},{id:'1',name:'confirmados'}];
+  views:any[] = [{id:'0', name:'DASHBOARD'}];
   id:any = 0;
   constructor(private _usuarioService: UsuarioService,
               private router:Router) { }

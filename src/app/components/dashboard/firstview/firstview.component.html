@@ -15,33 +15,12 @@
                         <h5>{{item.date | date:'shortTime' }}</h5>
                     </div>
                     <div class="col-6">
-                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#stripePagadoModal">>PAGADO</button>
-                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#stripePagadoModal">>PAGADO</button>
+                        <button class="btn-service green">PAGADO</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="stripePagadoModal" tabindex="-1" role="dialog" aria-labelledby="stripePagadoModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="pagadoModalLabel">PAGADO</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ¿Desea confirmar el pedido?
-                                        <br> Por favor asegurese de haber llenado todos los campos obligatorios.
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id)">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" data-target="#stripeConfirmadoModal">CONFIRMADO</button>
-                        <button *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" data-target="#stripeConfirmadoModal">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
                         <!-- Modal -->
-                        <div class="modal fade" id="stripeConfirmadoModal" tabindex="-1" role="dialog" aria-labelledby="stripeConfirmadoModalLabel" aria-hidden="true">
+                        <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="stripeConfirmadoModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -55,8 +34,8 @@
                                         <br> Por favor asegurese de haber llenado todos los campos obligatorios.
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id)">Confirmar</button>
+                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval();">Cancelar</button>
+                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
                                     </div>
                                 </div>
                             </div>

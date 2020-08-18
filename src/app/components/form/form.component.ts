@@ -66,6 +66,10 @@ export class FormComponent implements OnInit {
     });
   }
 
+  sendOrder(order){
+    this._service2.setOrder(order);
+  }
+
   getIdPay(id:any){
     this.id = id;
   }
@@ -98,12 +102,12 @@ export class FormComponent implements OnInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
+      this.sendOrder(this.data);
       /* console.log(this.data); */
-      
     }
  }
  
- sendData(){
+ sendData(){ 
     this.confirmed = true;
     this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
     (response) => console.log(response),
