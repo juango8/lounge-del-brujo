@@ -118,7 +118,7 @@ export class FormComponent implements OnInit {
  
  sendData(){ 
     
-    this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
+    this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
     (error) => console.log(error.status),
   )

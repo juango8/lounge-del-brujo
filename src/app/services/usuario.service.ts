@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  public baseRoot = 'http://54.160.110.125:8001';
+  public baseRoot = 'https://admin.loungedelbrujo.com';
   private apiLogin = this.baseRoot + '/authentication/login';
 
   constructor(private http: HttpClient) { }

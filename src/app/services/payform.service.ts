@@ -8,7 +8,7 @@ export class PayformService {
   
   public productsList: Array<any>;
   public order: Array<any>;
-  public baseRoot = 'http://54.160.110.125:8001';
+  public baseRoot = 'https://admin.loungedelbrujo.com';
   private apiPayId = this.baseRoot + '/ecommerce/payment_methods';
   categories: any[] = [];
   

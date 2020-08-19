@@ -42,14 +42,14 @@ export class FirstviewComponent implements OnInit {
   }
 
   updatePaid(value:any){
-    this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/paid/'+value, this.paid,{ 'headers': this.headers } ).subscribe(
+    this.http.put('https://admin.loungedelbrujo.com/ecommerce/lounje/orders/update/paid/'+value, this.paid,{ 'headers': this.headers } ).subscribe(
     (response) => console.log(response),
     (error) => console.log(error.status),
   )
  }
 
  updateConfirmed(value:any){
-  this.http.put('http://54.160.110.125:8001/ecommerce/lounje/orders/update/confirmed/'+value, this.confirmed,{ 'headers': this.headers } ).subscribe(
+  this.http.put('https://admin.loungedelbrujo.com/ecommerce/lounje/orders/update/confirmed/'+value, this.confirmed,{ 'headers': this.headers } ).subscribe(
   (response) => console.log(response),
   (error) => console.log(error.status),
 )

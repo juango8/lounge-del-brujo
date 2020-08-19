@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DashboardService {
-  public baseRoot = 'http://54.160.110.125:8001';
+  public baseRoot = 'https://admin.loungedelbrujo.com';
   private apiDashboard = this.baseRoot + '/ecommerce/lounje/orders/dashboard';
   private apiConfirmed = this.baseRoot + '/ecommerce/lounje/orders/confirmed';
 
