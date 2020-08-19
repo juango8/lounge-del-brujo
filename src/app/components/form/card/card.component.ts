@@ -28,7 +28,6 @@ export class CardComponent implements OnInit {
             body: JSON.stringify(purchase)
         })
         .then(function(result) {
-            console.log(purchase);
             return result.json();
         })
         .then(function(data) {

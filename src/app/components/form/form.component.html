@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <br>
-                <app-card *ngIf="forma.value.payment_method==3 && confirmed"></app-card>
+                <app-card *ngIf="forma.value.payment_method==3 && confirmed && order.value.id != ''"></app-card>
                 <app-cash *ngIf="forma.value.payment_method==1 && confirmed"></app-cash>
                 <app-yape *ngIf="forma.value.payment_method==2 && confirmed"></app-yape>
                 <br>

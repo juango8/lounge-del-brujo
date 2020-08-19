@@ -56,7 +56,6 @@ export class FormComponent implements OnInit {
 
   crearFormulario(){
     this.forma = this.fb.group({
-      id:[''],
       name: ['', Validators.required],
       number: ['', [Validators.required, Validators.minLength(9), Validators.pattern("^[0-9]*$")]],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
@@ -118,11 +117,12 @@ export class FormComponent implements OnInit {
  }
  
  sendData(){ 
-    this.confirmed = true;
+    
     this.http.post('http://54.160.110.125:8001/ecommerce/lounje/orders', this.data ).subscribe(
-    (response:any) => this.forma.value.id = response.id,
+    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
     (error) => console.log(error.status),
   )
-  this.sendOrder(this.data);
+  this.sendOrder(this.order.value);
+  this.confirmed = true;
  }
 }
