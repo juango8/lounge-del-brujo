@@ -14,6 +14,15 @@
   position: absolute;
 }
 
+h3 {
+  padding-top: 1em;
+}
+
+.containe-all {
+    
+  background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
+  }
+
 .lounge{
   border-radius: 50%;
   width: 150px;
