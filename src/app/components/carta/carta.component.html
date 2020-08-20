@@ -1,8 +1,9 @@
 <div class="wrapper">
     <div class="main">
         <nav class="navbar navbar-light bg-faded justify-content-between flex-nowrap flex-row">
+
             <div class="container justify-content-center">
-                <div class="fire">
+                <!-- <div class="fire">
                     <div class="particle"></div>
                     <div class="particle"></div>
                     <div class="particle"></div>
@@ -54,12 +55,17 @@
                     <div class="particle"></div>
                     <div class="particle"></div>
                 </div>
-                <img routerLink="/home" class="logo rounded d-block" src="assets/img/logo.png" alt="logo">
-                <ul class="nav navbar-nav flex-row justify-content-center">
+                <img routerLink="/home" class="logo rounded d-block" src="assets/img/logo.png" alt="logo"> -->
+                <app-logo-bar></app-logo-bar>
+                <ul class="nav navbar-nav flex-row justify-content-center container-category">
                     <li *ngFor="let category of categories; let i = index" class="nav-item" routerLinkActive="active">
-                        <a class="nav-link pr-3 category" (click)="setNumber(i)">{{ category.name }}</a>
+                        <a class="nav-link pr-3 category" (click)="setNumber(i); resetNumber();">{{ category.category_name }}</a>
                     </li>
-
+                </ul>
+                <ul class="nav navbar-nav flex-row justify-content-center container-subcategory">
+                    <li *ngFor="let subcategories of categories[getNumber()].subcategories; let i = index">
+                        <a class="nav-link pr-3 subcategory" (click)="setSubcategory(i)">{{ subcategories.subcategory_name }}</a>
+                    </li>
                 </ul>
                 <div class="buycar-responsive">
                     <button routerLink="/form" class="btn btn-block btn-lounge"> Continuar <small *ngIf="getFinalPrice()!= 0">S/{{getFinalPrice()}}.00</small></button>
@@ -92,9 +98,9 @@
         </nav>
         <hr>
         <div class="container">
-            <h2>{{categories[getNumber()].description}}</h2>
+            <h2>{{categories[getNumber()].subcategories[getSubcategory()].subcategory_name}}</h2>
             <div class="row justify-content-center">
-                <div class="card foodcard col-sm-10 col-md-5  col-lg-3" *ngFor="let dish of categories[getNumber()].items">
+                <div class="card foodcard col-sm-10 col-md-5  col-lg-3" *ngFor="let dish of categories[getNumber()].subcategories[getSubcategory()].items">
                     <img [src]="baseRoot+dish.urlImage" class="card-img-top image-card" [alt]="dish.name">
                     <div class="card-body">
                         <h5 class="card-title">{{dish.name}}</h5>

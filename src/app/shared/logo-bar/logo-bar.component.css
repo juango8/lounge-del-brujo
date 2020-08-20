@@ -338,6 +338,10 @@
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
+    .logo {
+        top: .5%;
+        left: 45%;
+    }
     .logo img {
         width: 15%;
     }

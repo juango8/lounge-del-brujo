@@ -100,12 +100,30 @@ h2 {
     right: 0;
 }
 
-.category {
+.menutitle {
+    width: 100%;
     color: white !important;
-    font-size: 16px;
+}
+
+.container-category {
+    width: 100%;
+}
+
+.container-subcategory {
+    width: 100%;
+}
+
+.whitetext {
+    color: white !important;
+}
+
+.category {
+    color: #781621 !important;
+    font-size: 30px;
     font-weight: 700;
     cursor: pointer;
     transition: .5s;
+    margin-top: 3rem;
 }
 
 hr {
@@ -113,10 +131,26 @@ hr {
 }
 
 .category:hover {
-    color: #781621 !important;
+    color: white !important;
 }
 
 .category:active {
+    color: white !important;
+}
+
+.subcategory {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.subcategory:hover {
+    color: #781621 !important;
+}
+
+.subcategory:active {
     color: #781621 !important;
 }
 
@@ -455,6 +489,9 @@ button:disabled {
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
+    .category {
+        margin-top: 5rem;
+    }
     .fire {
         margin-top: -35%;
     }

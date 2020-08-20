@@ -12,6 +12,7 @@ export class CartaComponent {
   categories: any[] = [];
   baseRoot: string;
   idCategory = 0;
+  idSubcategory= 0;
   finalOrder: any[] = [];
   finalProducts: any[]= [];
   finalPrice = 0;
@@ -32,6 +33,18 @@ export class CartaComponent {
 
   getNumber() {
     return this.idCategory;
+  }
+
+  resetNumber(){
+    this.idSubcategory = 0;
+  }
+
+  setSubcategory(i){
+    this.idSubcategory = i;
+  }
+
+  getSubcategory(){
+    return this.idSubcategory;
   }
 
   addDish(test: any) {
