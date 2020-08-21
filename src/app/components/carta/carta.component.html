@@ -64,7 +64,7 @@
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-center container-subcategory">
                     <li *ngFor="let subcategories of categories[getNumber()].subcategories; let i = index">
-                        <a class="nav-link pr-3 subcategory" (click)="setSubcategory(i)">{{ subcategories.subcategory_name }}</a>
+                        <a *ngIf="subcategories.subcategory_name!=0" class="nav-link pr-3 subcategory" (click)="setSubcategory(i);">{{ subcategories.subcategory_name }}</a>
                     </li>
                 </ul>
                 <div class="buycar-responsive">
@@ -98,7 +98,7 @@
         </nav>
         <hr>
         <div class="container">
-            <h2>{{categories[getNumber()].subcategories[getSubcategory()].subcategory_name}}</h2>
+            <h2 *ngIf="categories[getNumber()].subcategories[getSubcategory()].subcategory_name !=0">{{categories[getNumber()].subcategories[getSubcategory()].subcategory_name}}</h2>
             <div class="row justify-content-center">
                 <div class="card foodcard col-sm-10 col-md-5  col-lg-3" *ngFor="let dish of categories[getNumber()].subcategories[getSubcategory()].items">
                     <img [src]="baseRoot+dish.urlImage" class="card-img-top image-card" [alt]="dish.name">
