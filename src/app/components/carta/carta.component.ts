@@ -132,5 +132,4 @@ export class CartaComponent {
     let finalO = JSON.parse( localStorage.getItem("finalO"));
     return finalO;
   }
-
 }
