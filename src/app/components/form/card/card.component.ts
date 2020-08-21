@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CantidadService } from '../../../services/cantidad.service';
 import { PayformService } from '../../../services/payform.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-card',
@@ -11,12 +12,14 @@ export class CardComponent implements OnInit {
   
   public cantidadDesdeService:number;
   public order: Array<any>;
+  readonly order_id;
   constructor(private _service: CantidadService,
-              private _service2: PayformService) {
+              private _service2: PayformService, private http: HttpClient) {
     this.order = this._service2.getOrder();
     var stripe = Stripe("pk_test_51HDJkuHQGNRyxfTlmJsjEMgBtZBcVV7KXGOkTBXgYT2OlM65jzFK9WEV4EmQsHQVkZgumXNxoCbgSsrDz70NlAYd00Eq4EDVm0");
     // The items the customer wants to buy
     var purchase = this.order;
+    this.order_id = purchase["id"];
     // Disable the button until we have Stripe set up on the page
     document.querySelector("button").disabled = true;
     /* http://54.160.110.125:8001/api/ecommerce/payment_stripe */
@@ -84,6 +87,10 @@ export class CardComponent implements OnInit {
                     showError(result.error.message);
                 } else {
                     // The payment succeeded!
+                    this.http.post('http://admin.loungedelbrujo.com/ecommerce/update_paid_stripe', JSON.stringify({"id":this.order_id}) ).subscribe(
+    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
+    (error) => console.log(error.status),
+  )
                     orderComplete(result.paymentIntent.id);
                 }
             });
