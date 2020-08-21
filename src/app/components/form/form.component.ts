@@ -1,15 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, AfterViewInit} from '@angular/core';
 import { CantidadService } from '../../services/cantidad.service';
 import { PayformService } from '../../services/payform.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, AfterViewInit {
   forma:FormGroup;
   order:FormGroup;
   disabled:boolean = false;
@@ -17,6 +18,10 @@ export class FormComponent implements OnInit {
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
+  originalLatLong = [-16.4018061, -71.5536638];
+
+  private map;
+  private marker: any;
 
   public pay:any;
   public cantidadDesdeService:number;
@@ -38,6 +43,11 @@ export class FormComponent implements OnInit {
       this.pay = data;
     });
   }
+  ngAfterViewInit(): void {
+    this.initMap();
+    this.marker = L.marker(this.originalLatLong, {draggable: 'true'}).addTo(this.map);
+  }
+
   get nameNoValido(){
     return this.forma.get('name').invalid && this.forma.get('name').touched
   }
@@ -54,6 +64,37 @@ export class FormComponent implements OnInit {
     return this.forma.get('reference').invalid && this.forma.get('reference').touched
   }
 
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: this.originalLatLong,
+      zoom: 14
+    });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    tiles.addTo(this.map);
+  }
+
+  getlatlng(){
+    console.log(this.marker.getLatLng().lat + '');
+    console.log(this.marker.getLatLng().lng + '');
+    this.http.post<any>('https://admin.loungedelbrujo.com/ecommerce/delivery_cost', {
+      longitude: this.marker.getLatLng().lng + '',
+      latitude: this.marker.getLatLng().lat + ''
+    }).subscribe(
+      resp => {
+        console.log(resp);
+      }
+    );
+    this.forma.value.longitude = this.marker.getLatLng().lng + '';
+    this.forma.value.latitude = this.marker.getLatLng().lat + '';
+    this.marker.dragging.disable();
+  }
+  enablemarker(){
+    this.marker.dragging.enable();
+  }
+
   crearFormulario(){
     this.forma = this.fb.group({
       name: ['', Validators.required],
@@ -65,7 +106,9 @@ export class FormComponent implements OnInit {
       payment_method : [''],
       details:[''],
       paid:[false],
-      confirmed:[false]
+      confirmed:[false],
+      longitude: [''],
+      latitude: ['']
     });
   }
 
@@ -115,9 +158,9 @@ export class FormComponent implements OnInit {
       /* console.log(this.data); */
     }
  }
- 
- sendData(){ 
-    
+
+ sendData(){
+
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
     (error) => console.log(error.status),

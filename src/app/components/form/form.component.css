@@ -59,6 +59,24 @@ input {
     margin-bottom: 32px;
 }
 
+.map-container {
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*right: 0;*/
+  /*bottom: 0;*/
+  /*margin: 30px;*/
+  width: 100%;
+  height: 25em;
+}
+
+.map-frame {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
 
 /* Buttons and links */
 

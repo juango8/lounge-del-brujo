@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Nombres</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="nombres completos" formControlName="name" [class.is-invalid]="nameNoValido">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Nombres Completos" formControlName="name" [class.is-invalid]="nameNoValido">
                             <small *ngIf="nameNoValido" class="text-danger">
                                 Los nombres son obligatorios
                             </small>
@@ -24,7 +24,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Teléfono</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="número de telefono" formControlName="number" [class.is-invalid]="numberNoValido">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Número de Teléfono" formControlName="number" [class.is-invalid]="numberNoValido">
                             <small *ngIf="numberNoValido" class="text-danger">
                                 El número de teléfono es obligatorio
                             </small>
@@ -33,7 +33,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Correo</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" id="email" type="email" placeholder="correo electrónico" formControlName="email" [class.is-invalid]="emailNoValido">
+                            <input [readonly]="disabled || checker()" class="form-control" id="email" type="email" placeholder="Correo Electrónico" formControlName="email" [class.is-invalid]="emailNoValido">
                             <small *ngIf="emailNoValido" class="text-danger">
                                 El correo es obligatorio
                             </small>
@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Dirección</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="dirección" formControlName="address" [class.is-invalid]="addressNoValido">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Dirección" formControlName="address" [class.is-invalid]="addressNoValido">
                             <small *ngIf="addressNoValido" class="text-danger">
                                 La dirección es obligatoria
                             </small>
@@ -51,7 +51,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Referencia</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="referencia" formControlName="reference" [class.is-invalid]="referenceNoValido">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Referencia" formControlName="reference" [class.is-invalid]="referenceNoValido">
                             <small *ngIf="referenceNoValido" class="text-danger">
                                 La referencia es obligatoria
                             </small>
@@ -60,8 +60,19 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label">Comentario</label>
                         <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="ejemplo: Mayonesa adicional" formControlName="comentary">
+                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Ejemplo: Mayonesa Adicional" formControlName="comentary">
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Ubicacion</label>
+                      <div class="map-container">
+                        <div class="map-frame">
+                          <div id="map"></div>
+                        </div>
+                      </div>
+                      <a (click)="getlatlng()">aqui</a>
+                      <a (click)="enablemarker()">no</a>
+
                     </div>
                 </div>
 
