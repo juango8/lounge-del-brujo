@@ -59,17 +59,23 @@
                 <app-logo-bar></app-logo-bar>
                 <ul class="nav navbar-nav flex-row justify-content-center container-category">
                     <li *ngFor="let category of categories; let i = index" class="nav-item" routerLinkActive="active">
-                        <a class="nav-link pr-3 category" (click)="setNumber(i); resetNumber();">{{ category.category_name }}</a>
+                        <a class="nav-link pr-3 category" [ngStyle]="getNumber()==i ? {'color': 'white', 'border-style': 'solid', 'border-color': 'white'} : {'color': '#781621'}" (click)="setNumber(i); resetNumber();">{{ category.category_name }}</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-center container-subcategory">
                     <li *ngFor="let subcategories of categories[getNumber()].subcategories; let i = index">
-                        <a *ngIf="subcategories.subcategory_name!=0" class="nav-link pr-3 subcategory" (click)="setSubcategory(i);">{{ subcategories.subcategory_name }}</a>
+                        <a *ngIf="subcategories.subcategory_name!=0" class="nav-link pr-3 subcategory" [ngStyle]="{ 'color': getSubcategory()==i ? '#781621' : 'white'}" (click)="setSubcategory(i);">{{ subcategories.subcategory_name }}</a>
                     </li>
                 </ul>
                 <div class="buycar-responsive">
-                    <button routerLink="/form" class="btn btn-block btn-lounge"> Continuar <small *ngIf="getFinalPrice()!= 0">S/{{getFinalPrice()}}.00</small></button>
-                    <button class="btn btn-block btn-lounge" data-toggle="modal" data-target="#exampleModal">Carrito de compras</button>
+                    <div class="container-btn-style row">
+                        <div class="col-lg-4 col-6 mcenter-content description">
+                            <button routerLink="/form" class="btn btn-block btn-lounge btn-row"> Continuar <small *ngIf="getFinalPrice()!= 0">S/{{getFinalPrice()}}.00</small></button>
+                        </div>
+                        <div class="col-lg-4 col-6 mcenter-content description">
+                            <button class="btn btn-block btn-lounge btn-row" data-toggle="modal" data-target="#exampleModal">Carrito de compras</button>
+                        </div>
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

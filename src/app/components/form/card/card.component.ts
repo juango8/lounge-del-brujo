@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CantidadService } from '../../../services/cantidad.service';
 import { PayformService } from '../../../services/payform.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +13,8 @@ export class CardComponent implements OnInit {
   public cantidadDesdeService:number;
   public order: Array<any>;
   constructor(private _service: CantidadService,
-              private _service2: PayformService) {
+              private _service2: PayformService,
+              private http: HttpClient) {
     this.order = this._service2.getOrder();
     var stripe = Stripe("pk_test_51HDJkuHQGNRyxfTlmJsjEMgBtZBcVV7KXGOkTBXgYT2OlM65jzFK9WEV4EmQsHQVkZgumXNxoCbgSsrDz70NlAYd00Eq4EDVm0");
     // The items the customer wants to buy
@@ -83,7 +85,6 @@ export class CardComponent implements OnInit {
                     // Show error to your customer
                     showError(result.error.message);
                 } else {
-                    // The payment succeeded!
                     orderComplete(result.paymentIntent.id);
                 }
             });

@@ -155,12 +155,13 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
+      
       /* console.log(this.data); */
     }
  }
 
  sendData(){
-
+    console.log(JSON.stringify(this.data));
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
     (error) => console.log(error.status),

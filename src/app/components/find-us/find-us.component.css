@@ -1,50 +1,58 @@
 .map-responsive {
-  overflow: hidden;
-  padding-bottom: 56.25%;
-  margin-top: 2em;
-  position: relative;
-  height: 0;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    margin-top: 2em;
+    position: relative;
+    height: 0;
 }
 
 .map-responsive .iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: auto;
-  position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    position: absolute;
 }
 
 h3 {
-  padding-top: 1em;
+    padding-top: 1em;
+}
+
+.description {
+    color: white;
+    font-weight: 600;
 }
 
 .containe-all {
-    
-  background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
-  }
-
-.lounge{
-  border-radius: 50%;
-  width: 150px;
-  display: inline-block;
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
 }
 
-.vega{
-  border-radius: 50%;
-  width: 200px;
-  display: inline-block;
+.whatsapp-chat {
+    position: fixed;
+    bottom: 0;
 }
 
-.alinear{
-  display: inline-block;
-  vertical-align: middle;
+.lounge {
+    border-radius: 50%;
+    width: 34%;
+    display: inline-block;
 }
 
-.alinear h2{
-  width: auto;
+.vega {
+    border-radius: 50%;
+    width: 50%;
+    display: inline-block;
+}
+
+.alinear {
+    vertical-align: middle;
+}
+
+.alinear h2 {
+    width: auto;
 }
 
 .mcenter-content {
-  margin: 2em 0;
-  text-align: center;
+    margin: 2em 0;
+    text-align: center;
 }
