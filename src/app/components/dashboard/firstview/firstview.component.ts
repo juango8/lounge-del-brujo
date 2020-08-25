@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { interval, Subscription } from 'rxjs';
+import {Howl, Howler} from 'howler';
+
+
+
 
 @Component({
   selector: 'app-firstview',
@@ -22,6 +26,10 @@ export class FirstviewComponent implements OnInit {
   myId:number;
   subscription: Subscription;
   headers = new HttpHeaders();
+  public sound = new Howl({
+    src: ['../../../../assets/sound/alert.mp3'],
+    loop: true,
+  });
 
   constructor(
     private _dashboardService:DashboardService,
@@ -67,6 +75,7 @@ export class FirstviewComponent implements OnInit {
 }
 
   setPaidState(value:boolean, id:number){
+     this.sound.play();
     this.paidState = !value;
     const update = {
       paid : this.paidState
@@ -84,6 +93,21 @@ export class FirstviewComponent implements OnInit {
     this.confirmed = update;
     this.myId = id;
     this.updateConfirmed(this.myId);
+    this.sound.stop()
+  }
+
+  checkConfirmedState()
+  {
+    for(let i=0;i<this.test.length;i++){
+      for(let j=0;j<this.test[i]["items"].length;j++){
+        console.log(this.test[i]["items"])
+        if(this.test[i]["items"][j].confirmed==false)
+        {
+          this.sound.play()
+        }
+
+      }
+    }
   }
 
   subscribeDataInterval(){
@@ -93,6 +117,7 @@ export class FirstviewComponent implements OnInit {
         this.ordersEfectivo = data.payment_methods[0];
         this.ordersYape = data.payment_methods[1];
         this.ordersStripe = data.payment_methods[2];
+        this.checkConfirmedState();
       }));
   }
 
