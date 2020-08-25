@@ -26,6 +26,7 @@ import { FirstviewComponent } from './components/dashboard/firstview/firstview.c
 import { SecondviewComponent } from './components/dashboard/secondview/secondview.component';
 import { LogoBarComponent } from './shared/logo-bar/logo-bar.component';
 import { LoginComponent } from './components/login/login.component';
+import { ComponentsComponent } from './components/components.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LoginComponent } from './components/login/login.component';
     FirstviewComponent,
     SecondviewComponent,
     LogoBarComponent,
-    LoginComponent
+    LoginComponent,
+    ComponentsComponent
   ],
   imports: [
     BrowserModule,

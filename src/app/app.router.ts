@@ -1,22 +1,15 @@
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './components/home/home.component';
-import {AboutComponent} from './components/about/about.component';
-import {CartaComponent} from './components/carta/carta.component';
-import {FormComponent} from './components/form/form.component';
-import {FindUsComponent} from './components/find-us/find-us.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { ComponentsComponent } from './components/components.component';
 
 const APP_ROUTES: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'find-us', component: FindUsComponent},
-  { path: 'carta', component: CartaComponent},
-  { path: 'form', component: FormComponent,},
-  { path: 'dashboard', component: DashboardComponent,},
+  { 
+    path: '', 
+    component: ComponentsComponent,
+    loadChildren: () => import('./child-routes.module').then(m => m.ChildRoutesModule)
+  },
   { path: 'login', component: LoginComponent,},
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
+  
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
