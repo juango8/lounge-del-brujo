@@ -23,6 +23,19 @@ h3 {
     font-weight: 600;
 }
 
+.background-find-us-banner {
+    position: relative;
+    width: 100%;
+    min-height: 20vh;
+    background-color: black;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 70px;
+    font-weight: 700;
+}
+
 .containe-all {
     background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
 }
@@ -55,4 +68,11 @@ h3 {
 .mcenter-content {
     margin: 2em 0;
     text-align: center;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .background-find-us-banner {
+        font-size: 40px;
+        min-height: 20vh;
+    }
 }

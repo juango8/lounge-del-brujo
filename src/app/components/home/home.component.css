@@ -124,7 +124,7 @@
 /* button style */
 
 .box {
-    margin-top: 1vh;
+    margin-top: 1rem;
     position: relative;
     font-family: 'Warpaint';
 }
@@ -511,24 +511,32 @@
 
 @media only screen and (max-device-width: 480px) {
     .slide1 {
-        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide1.png);
+        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide1.jpg);
     }
     .slide2 {
-        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide2.png);
+        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide2.jpg);
     }
     .slide3 {
-        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide3.png);
+        background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, .4)), url(src/assets/img/mini-slide3.jpg);
+    }
+    .logo img {
+        width: 50%;
     }
     .home {
         width: 300px;
         font-size: 25px;
+    }
+    .box {
+        margin-top: 2rem;
     }
     .box a.btn {
         font-size: 30px;
         width: 70vw;
     }
     .fire {
-        font-size: 5px;
+        font-size: 10px;
+        width: 20vw;
+        height: 50%;
     }
 }
 

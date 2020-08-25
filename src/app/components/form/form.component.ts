@@ -18,7 +18,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
-  originalLatLong = [-16.4018061, -71.5536638];
+  originalLatLong = [-16.3855114, -71.5440775];
 
   private map;
   private marker: any;
@@ -64,6 +64,12 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
   get referenceNoValido(){
     return this.forma.get('reference').invalid && this.forma.get('reference').touched
+  }
+  get longitudeNoValido(){
+    return this.forma.get('longitude').invalid && this.forma.get('longitude').touched
+  }
+  get latitudeNoValido(){
+    return this.forma.get('latitude').invalid && this.forma.get('latitude').touched
   }
 
   showPosition(position) {
@@ -166,6 +172,10 @@ export class FormComponent implements OnInit, AfterViewInit {
     return this.cantidadDesdeService == null || this.cantidadDesdeService ==0;
   }
 
+  checkerMap(){
+    return this.forma.value.longitude ==0 || this.forma.value.latitude == 0;
+  }
+
   guardar(){
     if( this.forma.invalid ){
       return Object.values(this.forma.controls).forEach(control =>{
@@ -177,8 +187,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
-      
-      /* console.log(this.data); */
     }
  }
 
@@ -189,6 +197,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     (error) => console.log(error.status),
   )
   this.sendOrder(this.order.value);
-  this.confirmed = true;
+  console.log(this.forma.value.latitude);
+  /* if(this.forma.value.latitude){
+    this.confirmed = true;
+  } */
  }
 }

@@ -3,63 +3,10 @@
         <nav class="navbar navbar-light bg-faded justify-content-between flex-nowrap flex-row">
 
             <div class="container justify-content-center">
-                <!-- <div class="fire">
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                </div>
-                <img routerLink="/home" class="logo rounded d-block" src="assets/img/logo.png" alt="logo"> -->
                 <app-logo-bar></app-logo-bar>
                 <ul class="nav navbar-nav flex-row justify-content-center container-category">
                     <li *ngFor="let category of categories; let i = index" class="nav-item" routerLinkActive="active">
-                        <a class="nav-link pr-3 category" [ngStyle]="getNumber()==i ? {'color': 'white', 'border-style': 'solid', 'border-color': 'white'} : {'color': '#781621'}" (click)="setNumber(i); resetNumber();">{{ category.category_name }}</a>
+                        <a class="nav-link pr-3 category" [ngStyle]="getNumber()==i ? {'color': 'white'} : {'color': '#781621'}" (click)="setNumber(i); resetNumber();"><i *ngIf="getNumber()==i" class="fas fa-arrow-right"></i> {{ category.category_name }}</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-center container-subcategory">
