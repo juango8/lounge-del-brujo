@@ -25,6 +25,8 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   public pay:any;
   public cantidadDesdeService:number;
+    public cantidadDelivery: number;
+    public deliveryRequest = false;
   public productsList: Array<any>;
   public finalOrder: Array<any>;
   private lat = 0;
@@ -112,7 +114,8 @@ export class FormComponent implements OnInit, AfterViewInit {
       latitude: this.marker.getLatLng().lat + ''
     }).subscribe(
       resp => {
-        console.log(resp);
+        this.deliveryRequest = true;
+        this.cantidadDelivery = resp.cost;
       }
     );
     this.forma.value.longitude = this.marker.getLatLng().lng + '';

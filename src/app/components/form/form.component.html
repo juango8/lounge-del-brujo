@@ -8,8 +8,16 @@
     <div class="row main-form">
         <div class="col d-flex justify-content-center alig-items-center">
             <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
-                <h3 *ngIf="!checker()">Cantidad a pagar: S/.{{ cantidadDesdeService }},00</h3>
-                <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.</h3>
+                <div *ngIf="!checker()">
+                    <h3>Cantidad a pagar:</h3>
+                    <ul>
+                        <li><h5>Pedido: S/.{{ cantidadDesdeService }},00</h5></li>
+                        <li *ngIf="deliveryRequest"><h5>Delivery: S/.{{ cantidadDelivery }},00</h5></li>
+                    </ul>
+                </div>
+                <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink"
+                                                                                                      [routerLink]="'/carta'">carta</a>.
+                </h3>
                 <br>
                 <div>
                     <div class="form-group row">
