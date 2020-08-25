@@ -7,7 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lounge-del-brujo';
-  onActivate(event) {
-    window.scroll(0, 0);
-  }
+  
 }
