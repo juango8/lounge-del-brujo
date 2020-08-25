@@ -5,6 +5,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 
+import { icon, Marker } from 'leaflet';
+const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
+const iconUrl = 'assets/img/marker-icon.png';
+const shadowUrl = 'assets/img/marker-shadow.png';
+const iconDefault = icon({
+    iconRetinaUrl,
+    iconUrl,
+    shadowUrl,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+});
+Marker.prototype.options.icon = iconDefault;
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -179,6 +195,7 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   getIdPay(id:any){
     this.id = id;
+    this._service.setCantidad(this._service.getCantidad() + this.cantidadDelivery);
   }
 
   getProductsDesdeService(){
@@ -223,6 +240,6 @@ export class FormComponent implements OnInit, AfterViewInit {
     (error) => console.log(error.status),
   )
   this.sendOrder(this.order.value);
-  
+
  }
 }

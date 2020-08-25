@@ -40,14 +40,14 @@ export class FirstviewComponent implements OnInit {
       this.ordersEfectivo = data.payment_methods[0];
       this.ordersYape = data.payment_methods[1];
       this.ordersStripe = data.payment_methods[2];
-      console.log(data.payment_methods[1].items[0].details);
+      // console.log(data.payment_methods[1].items[0].details);
     });
     this.headers=this.headers.set('content-type', 'application/json')
     this.headers=this.headers.set('Authorization', `Token ${localStorage.getItem('token')}`)
-    this.subscribeDataInterval(); 
-    
+    this.subscribeDataInterval();
+
   }
-  
+
   ngOnInit(): void {
   }
 
@@ -100,10 +100,10 @@ export class FirstviewComponent implements OnInit {
   {
     for(let i=0;i<this.test.length;i++){
       for(let j=0;j<this.test[i]["items"].length;j++){
-        console.log(this.test[i]["items"])
+        // console.log(this.test[i]["items"])
         if(this.test[i]["items"][j].confirmed==false)
         {
-          this.sound.play()
+          this.sound.play();
         }
 
       }
