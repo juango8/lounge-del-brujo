@@ -20,8 +20,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   products:any[]=[];
   originalLatLong = [-16.3855114, -71.5440775];
 
-  private map;
-  private marker: any;
+  public map;
+  public marker: L.marker;
 
   public pay:any;
   public cantidadDesdeService:number;
@@ -29,8 +29,9 @@ export class FormComponent implements OnInit, AfterViewInit {
     public deliveryRequest = false;
   public productsList: Array<any>;
   public finalOrder: Array<any>;
-  private lat = 0;
-  private lng = 0;
+    lat: number;
+    lng: number;
+    acc: number;
   constructor(
     private http: HttpClient,
     private _service: CantidadService,
@@ -74,41 +75,58 @@ export class FormComponent implements OnInit, AfterViewInit {
     return this.forma.get('latitude').invalid && this.forma.get('latitude').touched
   }
 
-  showPosition(position) {
-    // this.lat = position.coords.latitude;
-    // this.lng = position.coords.longitude;
-    console.log('1', position.coords.latitude);
-    console.log('1', position.coords.longitude);
-    console.log('1', position.coords.accuracy);
-  }
-  error(err){
-    console.log('err', err.code, err.message);
-  }
-  private initMap(): void {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 5000
-    };
-    console.log('2', this.lat);
-    console.log('2', this.lng);
-    navigator.geolocation.getCurrentPosition(this.showPosition, this.error, options);
-    console.log('3', this.lat);
-    console.log('3', this.lng);
-    this.map = L.map('map', {
-      center: this.originalLatLong,
-      zoom: 14
-    });
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-    tiles.addTo(this.map);
-  }
+    error(err) {
+        console.log('err', err.code, err.message);
+    }
+
+    getPosition(): Promise<any> {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 5000
+        };
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resp => {
+                    resolve({lng: resp.coords.longitude, lat: resp.coords.latitude, acc: resp.coords.accuracy});
+                },
+                err => {
+                    reject(err);
+                },
+                options);
+        });
+    }
+
+    delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+
+    initMap(): void {
+        // navigator.geolocation.getCurrentPosition(this.showPosition, this.error, options);
+        this.getPosition().then(pos => {
+            // console.log(`Position: ${pos.lng} ${pos.lat}`);
+            console.log('acc', pos.acc);
+            (async () => {
+                await this.delay(2000);
+                this.lat = pos.lat;
+                this.lng = pos.lng;
+                console.log('current pos', this.lat, this.lng);
+                this.setLATLNG(this.lat, this.lng);
+            })();
+        });
+        this.map = L.map('map', {
+            center: this.originalLatLong,
+            zoom: 14
+        });
+        const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+        tiles.addTo(this.map);
+    }
 
   getlatlng(){
-    console.log(this.marker.getLatLng().lat + '');
-    console.log(this.marker.getLatLng().lng + '');
+    // console.log(this.marker.getLatLng().lat + '');
+    // console.log(this.marker.getLatLng().lng + '');
     this.http.post<any>('https://admin.loungedelbrujo.com/ecommerce/delivery_cost', {
       longitude: this.marker.getLatLng().lng + '',
       latitude: this.marker.getLatLng().lat + ''
@@ -124,6 +142,11 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
   enablemarker(){
     this.marker.dragging.enable();
+  }
+
+  setLATLNG(a: number, b: number){
+      this.marker.setLatLng([a, b]);
+      this.map.panTo(new L.LatLng(a, b));
   }
 
   crearFormulario(){
