@@ -13,6 +13,7 @@ export class CartaComponent {
   baseRoot: string;
   idCategory = 0;
   idSubcategory= 0;
+  index = 0;
   finalOrder: any[] = [];
   finalProducts: any[]= [];
   finalPrice = 0;

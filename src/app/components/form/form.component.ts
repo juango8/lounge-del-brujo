@@ -27,6 +27,8 @@ export class FormComponent implements OnInit, AfterViewInit {
   public cantidadDesdeService:number;
   public productsList: Array<any>;
   public finalOrder: Array<any>;
+  private lat = 0;
+  private lng = 0;
   constructor(
     private http: HttpClient,
     private _service: CantidadService,
@@ -64,7 +66,27 @@ export class FormComponent implements OnInit, AfterViewInit {
     return this.forma.get('reference').invalid && this.forma.get('reference').touched
   }
 
+  showPosition(position) {
+    // this.lat = position.coords.latitude;
+    // this.lng = position.coords.longitude;
+    console.log('1', position.coords.latitude);
+    console.log('1', position.coords.longitude);
+    console.log('1', position.coords.accuracy);
+  }
+  error(err){
+    console.log('err', err.code, err.message);
+  }
   private initMap(): void {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 5000
+    };
+    console.log('2', this.lat);
+    console.log('2', this.lng);
+    navigator.geolocation.getCurrentPosition(this.showPosition, this.error, options);
+    console.log('3', this.lat);
+    console.log('3', this.lng);
     this.map = L.map('map', {
       center: this.originalLatLong,
       zoom: 14
@@ -155,12 +177,13 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
+      
       /* console.log(this.data); */
     }
  }
 
  sendData(){
-
+    console.log(JSON.stringify(this.data));
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;},
     (error) => console.log(error.status),

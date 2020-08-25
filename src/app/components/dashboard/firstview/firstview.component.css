@@ -69,6 +69,10 @@ button {
     background: red;
 }
 
+.quantity {
+    text-align: right;
+}
+
 button:hover {
     filter: contrast(115%);
 }

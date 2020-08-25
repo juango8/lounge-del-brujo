@@ -13,6 +13,7 @@ export class FirstviewComponent implements OnInit {
   public ordersYape:any;
   public ordersStripe:any;
   public intervalo = interval(10000);
+  displayState:boolean = false;
   paidState:boolean = false;
   confirmedState:boolean = false;
   test: any[] = [];
@@ -31,14 +32,24 @@ export class FirstviewComponent implements OnInit {
       this.ordersEfectivo = data.payment_methods[0];
       this.ordersYape = data.payment_methods[1];
       this.ordersStripe = data.payment_methods[2];
+      console.log(data.payment_methods[1].items[0].details);
     });
     this.headers=this.headers.set('content-type', 'application/json')
     this.headers=this.headers.set('Authorization', `Token ${localStorage.getItem('token')}`)
     this.subscribeDataInterval(); 
+    
+  }
+  
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
-    
+  displayProducts(){
+    if(this.displayState==false){
+      return this.displayState=true;
+    }
+    else{
+      return this.displayState=false;
+    }
   }
 
   updatePaid(value:any){
