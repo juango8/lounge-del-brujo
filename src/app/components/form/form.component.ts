@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 
 import { icon, Marker } from 'leaflet';
-const iconRetinaUrl = 'assets/img/marker-icon-2x.png';
-const iconUrl = 'assets/img/marker-icon.png';
+const iconRetinaUrl = 'assets/img/marker-icon-2x-r.png';
+const iconUrl = 'assets/img/marker-icon-r.png';
 const shadowUrl = 'assets/img/marker-shadow.png';
 const iconDefault = icon({
     iconRetinaUrl,
