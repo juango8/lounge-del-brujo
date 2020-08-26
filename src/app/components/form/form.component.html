@@ -86,18 +86,11 @@
                                     Debe fijar su ubicacion de manera obligatoria
                                 </small>
                             </div>
-                            <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> FIJAR</a>
-                            <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> EDITAR</a>
+                            <a class="btn-map" (click)="setLATLNG(lat, lng)"><i class="fas fa-location-arrow"></i> Ubícame</a>
+                            <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> Fijar</a>
+                            <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> Editar</a>
                         </div>
-<<<<<<< HEAD
-
-=======
-                        <a class="btn-map" (click)="setLATLNG(lat, lng)"><i class="fas fa-location-arrow"></i> Ubicame</a>
-                        <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> Fijar</a>
-                        <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> Editar</a>
->>>>>>> c11902fad0dd61c966cd2684b84de79df9aef6bf
                     </div>
-
                     <br>
                     <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
                         <div *ngFor="let item of pay">

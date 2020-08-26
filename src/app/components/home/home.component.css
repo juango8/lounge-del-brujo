@@ -105,8 +105,7 @@
 
 .home {
     width: 80vw;
-    font-size: 38px;
-    font-family: 'Warpaint';
+    font-size: 30px;
     text-align: center;
     top: 12vh;
     left: 50vw;
@@ -126,12 +125,12 @@
 .box {
     margin-top: 1rem;
     position: relative;
-    font-family: 'Warpaint';
+    
 }
 
 .box a.btn {
     width: 25vw;
-    font-size: 38px;
+    font-size: 30px;
 }
 
 .btn:link,
