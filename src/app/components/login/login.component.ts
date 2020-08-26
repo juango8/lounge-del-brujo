@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/dashboard')
     },
     (err)=>{
-      Swal.fire('Error', err.error.msg, 'error');
+      Swal.fire('Ingresa un usuario o contraseña, válidos', err.error.msg, 'error');
     });
  }
 

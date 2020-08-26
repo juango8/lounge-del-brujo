@@ -7,21 +7,23 @@
     <div class="row">
         <div class="col d-flex justify-content-center alig-items-center">
             <form autocomplete="off" [formGroup]="forma" (ngSubmit)="formLogin()">
+                <label class="col-2 col-form-label">username</label>
                 <div>
                     <div class="form-group row">
-                        <label class="col-2 col-form-label">username</label>
+
                         <div class="col-8">
-                            <input class="form-control" formControlName="username" [class.is-invalid]="idNoValido" type="text" placeholder="">
+                            <input class="form-control login-input" formControlName="username" [class.is-invalid]="idNoValido" type="text" placeholder="">
                             <small *ngIf="idNoValido" class="text-danger">
                                 El usuario es obligatorio
                             </small>
                         </div>
                     </div>
                 </div>
+                <label class="col-2 col-form-label">password</label>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">password</label>
+
                     <div class="col-md-8">
-                        <input class="form-control" formControlName="password" [class.is-invalid]="passwordNoValido" type="password" placeholder="">
+                        <input class="form-control login-input" formControlName="password" [class.is-invalid]="passwordNoValido" type="password" placeholder="">
                         <small *ngIf="passwordNoValido" class="text-danger">
                             La contraseña es obligatoria
                         </small>
@@ -30,7 +32,7 @@
                 <div class="form-group row">
                     <label class="col-2 col-form-label">&nbsp;</label>
                     <div class="input-group col-md-8">
-                        <button type="submit" class="btn btn-outline-primary">
+                        <button type="submit" id="mybutton" class="btn btn-primary btn-block">
                             Login
                         </button>
                     </div>
