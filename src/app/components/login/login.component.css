@@ -1,8 +1,29 @@
 .container {
-    margin-top: 15rem;
-    margin-bottom: 20rem;
+    margin-top: 30vh;
 }
 
-label {
-    margin-right: 2rem;
+.row {
+    color: rgb(120, 22, 33);
 }
+
+h1 {
+    color: rgb(120, 22, 33) !important;
+}
+
+#mybutton {
+    border-color: rgb(120, 22, 33) !important;
+    background-color: rgb(120, 22, 33) !important;
+}
+
+.login-input {
+    width: auto;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .container {
+        margin-top: 25vh;
+        margin-bottom: 0rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {}
