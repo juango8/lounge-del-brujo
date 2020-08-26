@@ -35,6 +35,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   id:any = 0;
   products:any[]=[];
   originalLatLong = [-16.3855114, -71.5440775];
+  nextform:boolean = false;
 
   public map;
   public marker: L.marker;
@@ -178,7 +179,8 @@ export class FormComponent implements OnInit, AfterViewInit {
       paid:[false],
       confirmed:[false],
       longitude: [''],
-      latitude: ['']
+      latitude: [''],
+      image_payment:['']
     });
   }
 
@@ -193,9 +195,14 @@ export class FormComponent implements OnInit, AfterViewInit {
     this._service2.setOrder(order);
   }
 
-  getIdPay(id:any){
+  setIdPay(id:any){
     this.id = id;
+    console.log(this.id);
     this._service.setCantidad(this._service.getCantidad() + this.cantidadDelivery);
+  }
+
+  getidPay(){
+    return this.id;
   }
 
   getProductsDesdeService(){
@@ -230,13 +237,18 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
+      console.log("se guardo el formulario");
     }
+ }
+
+ nextformCashAndYape(){
+   this.nextform = true;
  }
 
  sendData(){
     console.log(JSON.stringify(this.data));
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
-    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;},
+    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log('POST ENVIADO');},
     (error) => console.log(error.status),
   )
   this.sendOrder(this.order.value);

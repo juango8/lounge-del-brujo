@@ -11,6 +11,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^10.0.7",
+    "@angular-devkit/schematics": "^10.0.7",
     "@angular/animations": "~9.1.11",
     "@angular/common": "~9.1.11",
     "@angular/compiler": "~9.1.11",
@@ -28,6 +30,7 @@
     "express": "^4.17.1",
     "howler": "^2.2.0",
     "leaflet": "^1.6.0",
+    "ngx-spinner": "^10.0.1",
     "rxjs": "~6.5.4",
     "stripe": "^8.84.0",
     "sweetalert2": "^9.17.1",

@@ -1,6 +1,8 @@
-.container {
-    margin-top: 40px;
-    margin-bottom: 40px;
+.container-fluid {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: linear-gradient( to bottom, rgba(0, 0, 0, 1), rgba(120, 22, 33, 1), rgba(0, 0, 0, 1));
+    color: white;
 }
 
 form {
@@ -21,6 +23,10 @@ input {
     font-size: 16px;
     width: 100%;
     background: white;
+}
+
+.modal .fade {
+    color: black
 }
 
 .btn-map {

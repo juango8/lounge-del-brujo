@@ -1,5 +1,5 @@
 <app-logo-bar></app-logo-bar>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col d-flex justify-content-center alig-items-center">
             <h1>Información de la compra</h1>
@@ -8,109 +8,116 @@
     <div class="row main-form">
         <div class="col d-flex justify-content-center alig-items-center">
             <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
-                <div *ngIf="!checker()">
-                    <h3>Cantidad a pagar:</h3>
-                    <ul>
-                        <li><h5>Pedido: S/.{{ cantidadDesdeService }},00</h5></li>
-                        <li *ngIf="deliveryRequest"><h5>Delivery: S/.{{ cantidadDelivery }},00</h5></li>
-                    </ul>
-                </div>
-                <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink"
-                                                                                                      [routerLink]="'/carta'">carta</a>.
-                </h3>
-                <br>
                 <div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Nombres</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Nombres Completos" formControlName="name" [class.is-invalid]="nameNoValido">
-                            <small *ngIf="nameNoValido" class="text-danger">
-                                Los nombres son obligatorios
-                            </small>
-                        </div>
+                    <div *ngIf="!checker()">
+                        <h3>Cantidad a pagar:</h3>
+                        <ul>
+                            <li>
+                                <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
+                            </li>
+                            <li *ngIf="deliveryRequest">
+                                <h5>Delivery: S/.{{ cantidadDelivery }},00</h5>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Teléfono</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Número de Teléfono" formControlName="number" [class.is-invalid]="numberNoValido">
-                            <small *ngIf="numberNoValido" class="text-danger">
-                                El número de teléfono es obligatorio
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Correo</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" id="email" type="email" placeholder="Correo Electrónico" formControlName="email" [class.is-invalid]="emailNoValido">
-                            <small *ngIf="emailNoValido" class="text-danger">
-                                El correo es obligatorio
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Dirección</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Dirección" formControlName="address" [class.is-invalid]="addressNoValido">
-                            <small *ngIf="addressNoValido" class="text-danger">
-                                La dirección es obligatoria
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Referencia</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Referencia" formControlName="reference" [class.is-invalid]="referenceNoValido">
-                            <small *ngIf="referenceNoValido" class="text-danger">
-                                La referencia es obligatoria
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Comentario</label>
-                        <div class="col">
-                            <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Ejemplo: Mayonesa Adicional" formControlName="comentary">
-                        </div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label class="col-2 col-form-label">Ubicacion</label>
-                        <div class="map-container">
-                            <div class="map-frame">
-                                <div id="map">
-                                </div>
+                    <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.
+                    </h3>
+                    <br>
+                    <div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Nombres</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Nombres Completos" formControlName="name" [class.is-invalid]="nameNoValido">
+                                <small *ngIf="nameNoValido" class="text-danger">
+                                    Los nombres son obligatorios
+                                </small>
                             </div>
                         </div>
-                        <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> FIJAR</a>
-                        <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> EDITAR</a>
-                    </div>
-                    <small *ngIf="checkerMap()" class="text-danger">
-                        Debe fijar su ubicacion de manera obligatoria
-                    </small>
-                </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Teléfono</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Número de Teléfono" formControlName="number" [class.is-invalid]="numberNoValido">
+                                <small *ngIf="numberNoValido" class="text-danger">
+                                    El número de teléfono es obligatorio
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Correo</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" id="email" type="email" placeholder="Correo Electrónico" formControlName="email" [class.is-invalid]="emailNoValido">
+                                <small *ngIf="emailNoValido" class="text-danger">
+                                    El correo es obligatorio
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Dirección</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Dirección" formControlName="address" [class.is-invalid]="addressNoValido">
+                                <small *ngIf="addressNoValido" class="text-danger">
+                                    La dirección es obligatoria
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Referencia</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Referencia" formControlName="reference" [class.is-invalid]="referenceNoValido">
+                                <small *ngIf="referenceNoValido" class="text-danger">
+                                    La referencia es obligatoria
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Comentario</label>
+                            <div class="col">
+                                <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Ejemplo: Mayonesa Adicional" formControlName="comentary">
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <label class="col-2 col-form-label">Ubicacion</label>
+                            <div class="map-container">
+                                <div class="map-frame">
+                                    <div id="map">
+                                    </div>
+                                </div>
+                                <small *ngIf="checkerMap()" class="text-danger">
+                                    Debe fijar su ubicacion de manera obligatoria
+                                </small>
+                            </div>
+                            <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> FIJAR</a>
+                            <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> EDITAR</a>
+                        </div>
 
-                <br>
-                <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
-                    <div *ngFor="let item of pay">
-                        <div>
-                            <button [disabled]="disabled || checker() || checkerMap()" (click)="getIdPay(item.id)" class="payform" data-toggle="modal" data-target="#exampleModal">
-                        Paga con {{item.name}}
-                      </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                 <span aria-hidden="true">&times;</span>
-                                             </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ¿Desea confirmar el pedido?
-                                            <br> Por favor asegurese de haber llenado todos los campos obligatorios.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button [routerLink]="'/carta'" type="button" data-dismiss="modal">Cancelar</button>
-                                            <button data-dismiss="modal" (click)="sendData()" type="submit">Confirmar</button>
+                    </div>
+
+                    <br>
+                    <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
+                        <div *ngFor="let item of pay">
+                            <div>
+                                <button [disabled]="disabled || checker() || checkerMap()" (click)="setIdPay(item.id)" class="payform" data-toggle="modal" data-target="#exampleModal">
+                                    Paga con {{item.name}}
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                     <span aria-hidden="true">&times;</span>
+                                                 </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Desea confirmar el pedido?
+                                                <br> Por favor asegurese de haber llenado todos los campos obligatorios.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button [routerLink]="'/carta'" type="button" data-dismiss="modal">Cancelar</button>
+                                                <button *ngIf="getidPay()==3 || getidPay()==1" data-dismiss="modal" (click)="sendData()" type="submit">Confirmarsi</button>
+                                                <button *ngIf="getidPay()!=3 && getidPay()!=1" data-dismiss="modal" (click)="nextformCashAndYape()">Confirmarno</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,10 +128,22 @@
                 <br>
                 <app-card *ngIf="forma.value.payment_method==3 && confirmed && order.value.id != ''"></app-card>
                 <app-cash *ngIf="forma.value.payment_method==1 && confirmed"></app-cash>
-                <app-yape *ngIf="forma.value.payment_method==2 && confirmed"></app-yape>
+                <app-yape *ngIf="forma.value.payment_method==2 && nextform==true"></app-yape>
+                <div *ngIf="nextform==true">
+                    <label class="col col-form-label">Subir voucher</label>
+                    <div class="form-group row">
+
+                        <div class="col">
+                            <input class="form-control" type="file" placeholder="voucher" formControlName="image_payment">
+                            <!-- *ngIf="addressNoValido" -->
+                            <!-- <small class="text-danger">
+                            La dirección es obligatoria
+                        </small> -->
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>
-
             </form>
         </div>
     </div>
