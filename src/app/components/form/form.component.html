@@ -114,8 +114,8 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button [routerLink]="'/carta'" type="button" data-dismiss="modal">Cancelar</button>
-                                                <button *ngIf="getidPay()==3 || getidPay()==1" data-dismiss="modal" (click)="sendData()" type="submit">Confirmarsi</button>
-                                                <button *ngIf="getidPay()!=3 && getidPay()!=1" data-dismiss="modal" (click)="nextformCashAndYape()">Confirmarno</button>
+                                                <button *ngIf="getidPay()==3 || getidPay()==1" data-dismiss="modal" (click)="sendData()" type="submit">Confirmar</button>
+                                                <button *ngIf="getidPay()!=3 && getidPay()!=1" data-dismiss="modal" (click)="nextformCashAndYape()">Confirmar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -125,10 +125,10 @@
                     </div>
                 </div>
                 <br>
-                <app-card *ngIf="forma.value.payment_method==3 && confirmed && order.value.id != ''"></app-card>
-                <app-cash *ngIf="forma.value.payment_method==1 && confirmed"></app-cash>
-                <app-yape *ngIf="forma.value.payment_method==2 && nextform==true"></app-yape>
-                <div *ngIf="nextform==true">
+                <app-card *ngIf="getidPay()==3 && confirmed && order.value.id != ''"></app-card>
+                <app-cash *ngIf="getidPay()==1 && confirmed"></app-cash>
+                <app-yape *ngIf="getidPay()==2 && nextform===true"></app-yape>
+                <div *ngIf="nextform===true">
                     <label class="col col-form-label">Subir voucher</label>
                     <div class="form-group row">
 
@@ -140,6 +140,7 @@
                         </small> -->
                         </div>
                     </div>
+                    <button (click)="guardar()" class="payform">send</button>
                 </div>
                 <br>
                 <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>

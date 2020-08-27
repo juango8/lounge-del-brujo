@@ -233,13 +233,16 @@ export class FormComponent implements OnInit, AfterViewInit {
       });
     }
     else{
+      this.getlatlng();
       this.disabled = true;
       this.forma.value.payment_method = this.id;
       this.forma.value.details = this.getProductsDesdeService();
       this.data = this.forma.value;
       console.log("se guardo el formulario");
+      console.log(this.forma.value);
     }
  }
+
 
  nextformCashAndYape(){
    this.nextform = true;
