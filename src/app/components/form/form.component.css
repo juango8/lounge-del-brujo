@@ -40,6 +40,16 @@ input {
     transition: .5s;
 }
 
+.modal {
+    color: black;
+}
+
+.btn-style {
+    margin-bottom: .5rem;
+    margin-left: 2.5rem;
+    width: 15rem;
+}
+
 .btn-map:hover {
     box-shadow: 0 0px 0px black, inset 0 0 0px transparent;
     color: white;

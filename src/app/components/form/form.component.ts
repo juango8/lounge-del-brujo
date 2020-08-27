@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, AfterViewInit} from '@angular/core';
+import {Component, OnInit, Input, AfterViewInit, ChangeDetectorRef} from '@angular/core';
 import { CantidadService } from '../../services/cantidad.service';
 import { PayformService } from '../../services/payform.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -53,7 +53,8 @@ export class FormComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private _service: CantidadService,
     private _service2: PayformService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef) {
       this.crearFormulario();
       this.orderFormulario();
      }
@@ -64,6 +65,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     this._service2.getPayId().subscribe((data: any) => {
       this.pay = data;
     });
+    this.getProductsDesdeService();
   }
   ngAfterViewInit(): void {
     this.initMap();
@@ -215,7 +217,6 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.products.push(order);
     }
 /*     console.log(this.products); */
-    return this.products;
   }
 
   checker(){
@@ -224,6 +225,24 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   checkerMap(){
     return this.forma.value.longitude ==0 || this.forma.value.latitude == 0;
+  }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+ 
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+  
+      reader.onload = () => {
+        this.forma.patchValue({
+          image_payment: reader.result
+       });
+      
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
   }
 
   guardar(){
@@ -236,7 +255,7 @@ export class FormComponent implements OnInit, AfterViewInit {
       this.getlatlng();
       this.disabled = true;
       this.forma.value.payment_method = this.id;
-      this.forma.value.details = this.getProductsDesdeService();
+      this.forma.value.details = this.products;
       this.data = this.forma.value;
       console.log("se guardo el formulario");
       console.log(this.forma.value);

@@ -10,17 +10,7 @@
             <div class="col d-flex justify-content-center alig-items-center">
                 <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
                     <div>
-                        <div *ngIf="!checker()">
-                            <h3>Cantidad a pagar:</h3>
-                            <ul>
-                                <li>
-                                    <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
-                                </li>
-                                <li *ngIf="deliveryRequest">
-                                    <h5>Delivery: S/.{{ cantidadDelivery }},00</h5>
-                                </li>
-                            </ul>
-                        </div>
+
                         <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.
                         </h3>
                         <br>
@@ -91,12 +81,24 @@
                                 <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> Fijar</a>
                                 <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> Editar</a>
                             </div>
+                            <div *ngIf="!checker()">
+                                <h3>Cantidad a pagar:</h3>
+                                <ul>
+                                    <li>
+                                        <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
+                                    </li>
+                                    <li *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">
+                                        <h5>Delivery: S/.{{ cantidadDelivery }},00</h5>
+                                    </li>
+                                </ul>
+                                <h3 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Total: S/. {{ cantidadDesdeService + cantidadDelivery }},00 </h3>
+                            </div>
                         </div>
                         <br>
                         <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
                             <div *ngFor="let item of pay">
                                 <div>
-                                    <button [disabled]="disabled || checker() || checkerMap()" (click)="setIdPay(item.id)" class="payform" data-toggle="modal" data-target="#exampleModal">
+                                    <button [disabled]="disabled || checker() || checkerMap()" (click)="setIdPay(item.id)" class="btn-map btn-style" data-toggle="modal" data-target="#exampleModal">
                                         Paga con {{item.name}}
                                     </button>
                                     <!-- Modal -->
@@ -105,9 +107,6 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                         <span aria-hidden="true">&times;</span>
-                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     ¿Desea confirmar el pedido?
@@ -128,20 +127,13 @@
                     <br>
                     <app-card *ngIf="getidPay()==3 && confirmed && order.value.id != ''"></app-card>
                     <app-cash *ngIf="getidPay()==1 && confirmed"></app-cash>
-                    <app-yape *ngIf="getidPay()==2 && nextform===true"></app-yape>
-                    <div *ngIf="nextform===true" class="animate__animated animate__fadeIn">
+                    <app-yape *ngIf="getidPay()==2 && nextform===true && disabled"></app-yape>
+                    <div *ngIf="nextform===true && disabled" class="animate__animated animate__fadeIn">
                         <label class="col col-form-label">Subir voucher</label>
                         <div class="form-group row">
-
-                            <div class="col">
-                                <input class="form-control" type="file" placeholder="voucher" formControlName="image_payment">
-                                <!-- *ngIf="addressNoValido" -->
-                                <!-- <small class="text-danger">
-                                La dirección es obligatoria
-                            </small> -->
-                            </div>
+                            <input type="file" (change)="onFileChange($event)" />
+                            <button type="submit" (click)="sendData()">Enviar</button>
                         </div>
-                        <button (click)="guardar()" class="payform">send</button>
                     </div>
                     <br>
                     <h5><a class="formlink" [routerLink]="'/carta'">Regresar a la carta</a></h5>
