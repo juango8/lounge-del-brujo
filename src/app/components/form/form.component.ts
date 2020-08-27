@@ -238,7 +238,9 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.forma.patchValue({
           image_payment: reader.result
        });
-      
+       this.forma.value.payment_method = this.id;
+      this.forma.value.details = this.products;
+       this.getlatlng();
         // need to run CD since file load runs outside of zone
         this.cd.markForCheck();
       };
@@ -268,10 +270,10 @@ export class FormComponent implements OnInit, AfterViewInit {
  }
 
  sendData(){
-    console.log(JSON.stringify(this.data));
-    this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.data ).subscribe(
-    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log('POST ENVIADO');},
-    (error) => console.log(error.status),
+  console.log(JSON.stringify(this.forma.value));
+    this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.forma.value ).subscribe(
+    (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log(response); console.log(JSON.stringify(this.forma.value));},
+    (error) =>{ console.log(error.status)},
   )
   this.sendOrder(this.order.value);
 
