@@ -23,30 +23,32 @@
         </div>
     </div>
 </div> -->
-<div class="row">
-    <div class="col d-flex justify-content-center alig-items-center">
-        <h5>Aceptamos las siguentes tarjetas</h5>
+<div class="animate__animated animate__fadeIn">
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <h5>Aceptamos las siguentes tarjetas</h5>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col d-flex justify-content-center alig-items-center">
-        <img src="../../../../assets/img/pay.png" width="50%">
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <img src="../../../../assets/img/pay.png" width="50%">
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col d-flex justify-content-center alig-items-center">
-        <h5>Por favor ingrese la información de la tarjeta</h5>
+    <div class="row">
+        <div class="col d-flex justify-content-center alig-items-center">
+            <h5>Por favor ingrese la información de la tarjeta</h5>
+        </div>
     </div>
+    <br>
+    <div id="card-element">
+    </div>
+    <button id="submit">
+                      <div class="spinner hidden" id="spinner"></div>
+                      <span id="button-text">Pagar S/.{{ cantidadDesdeService }},00</span>
+                    </button>
+    <p id="card-error" role="alert"></p>
+    <p class="result-message hidden">
+        Pago realizado con
+        <a href="" target="_blank">éxito</a>
+    </p>
 </div>
-<br>
-<div id="card-element">
-</div>
-<button id="submit">
-                  <div class="spinner hidden" id="spinner"></div>
-                  <span id="button-text">Pagar S/.{{ cantidadDesdeService }},00</span>
-                </button>
-<p id="card-error" role="alert"></p>
-<p class="result-message hidden">
-    Pago realizado con
-    <a href="" target="_blank">éxito</a>
-</p>
