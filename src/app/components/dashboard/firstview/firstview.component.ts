@@ -13,14 +13,11 @@ import {Howl, Howler} from 'howler';
   styleUrls: ['./firstview.component.css']
 })
 export class FirstviewComponent implements OnInit {
-  public ordersEfectivo:any;
-  public ordersYape:any;
-  public ordersStripe:any;
   public intervalo = interval(10000);
   displayState:boolean = false;
   paidState:boolean = false;
   confirmedState:boolean = false;
-  test: any[] = [];
+  dashboard: any[] = [];
   paid:any;
   confirmed:any;
   myId:number;
@@ -36,10 +33,7 @@ export class FirstviewComponent implements OnInit {
     private http: HttpClient
   ) {
     this._dashboardService.getDasboard().subscribe((data: any) => {
-      this.test = data.payment_methods;
-      this.ordersEfectivo = data.payment_methods[0];
-      this.ordersYape = data.payment_methods[1];
-      this.ordersStripe = data.payment_methods[2];
+      this.dashboard = data;
       // console.log(data.payment_methods[1].items[0].details);
     });
     this.headers=this.headers.set('content-type', 'application/json')
@@ -98,10 +92,10 @@ export class FirstviewComponent implements OnInit {
 
   checkConfirmedState()
   {
-    for(let i=0;i<this.test.length;i++){
-      for(let j=0;j<this.test[i]["items"].length;j++){
+    for(let i=0;i<this.dashboard.length;i++){
+      for(let j=0;j<this.dashboard[i]["items"].length;j++){
         // console.log(this.test[i]["items"])
-        if(this.test[i]["items"][j].confirmed==false)
+        if(this.dashboard[i]["items"][j].confirmed==false)
         {
           this.sound.play();
         }
@@ -113,10 +107,7 @@ export class FirstviewComponent implements OnInit {
   subscribeDataInterval(){
       const intervalo = interval(2000)
       this.subscription = intervalo.subscribe(n =>this._dashboardService.getDasboard().subscribe((data: any) => {
-        this.test = data.payment_methods;
-        this.ordersEfectivo = data.payment_methods[0];
-        this.ordersYape = data.payment_methods[1];
-        this.ordersStripe = data.payment_methods[2];
+        this.dashboard = data;
         this.checkConfirmedState();
       }));
   }

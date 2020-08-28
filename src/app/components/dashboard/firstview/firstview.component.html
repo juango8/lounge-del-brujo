@@ -1,22 +1,42 @@
 <div class="grid-container">
-    <div class="efectivo">
-        <h2 class="grid-title">{{ordersEfectivo.name | uppercase }}</h2>
-        <div *ngFor="let item of ordersEfectivo.items; let i = index">
-            <!-- template -->
+    <div class="orden">
+        <h2 class="grid-title">ORDENES</h2>
+        <div *ngFor="let item of dashboard; let i = index">
             <div class="order align-items-start">
-                <div class="row">
-                    <div class="col-6 text">
-                        <h6>{{item.name}}</h6>
-                        <h6>{{item.number}}</h6>
-                        <h6>{{item.email}}</h6>
-                        <h6>{{item.address}}</h6>
-                        <h6>{{item.reference}}</h6>
-                        <h6>{{item.comentary}}</h6>
-                        <h5>{{item.date | date:'shortTime' }}</h5>
+                <div class="row box">
+                    <div class="col-5 text">
+                        <h6>nombre : {{item.name}}</h6>
+                        <h6>teléfono : {{item.number}}</h6>
+                        <h6>email : {{item.email}}</h6>
+                        <h6>dirección : {{item.address}}</h6>
+                        <h6>referencia : {{item.reference}}</h6>
+                        <h6>comentario : {{item.comentary}}</h6>
+                        <h5>hora : {{item.date | date:'shortTime' }}</h5>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4 text">
+                        <div *ngIf="item.image_payment!=null">
+                            <h6>Comprobante de pago : </h6>
+                            <a class="voucher" (click)="unsubscribeDataInterval();"><img [src]="'https://admin.loungedelbrujo.com'+item.image_payment" width="100" data-toggle="modal" #elem [attr.data-target]="'#img'+item.id"></a>
+                            <div class="modal fade" #elem [attr.id]="'img'+item.id" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" data-backdrop="false" aria-hidden="false">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content modal-img">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="pagadoModalLabel">Comprobante de pago</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img [src]="'https://admin.loungedelbrujo.com'+item.image_payment" width="465">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" type="submit">Ok</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 text">
                         <button (click)="unsubscribeDataInterval();" class="btn-service" data-toggle="modal" #elem [attr.data-target]="'#order'+item.id">ORDEN</button>
-                        <div class="modal fade" #elem [attr.id]="'order'+item.id" tabindex="-1" role="dialog" aria-labelledby="stripeOrdenModalLabel" aria-hidden="true">
+                        <div class="modal fade" #elem [attr.id]="'order'+item.id" tabindex="-1" role="dialog" aria-labelledby="ordenModalLabel" data-backdrop="false" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -31,80 +51,7 @@
                                                 <h6>CANTIDAD</h6>
                                             </div>
                                         </div>
-                                        <div *ngFor="let product of ordersEfectivo.items[i].details">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <h6>{{product.product.name}}</h6>
-                                                </div>
-                                                <div class="col-6 quantity">
-                                                    <h6>{{product.quantity}}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button data-dismiss="modal" type="submit" (click)="subscribeDataInterval();">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn-service green">PAGADO</button>
-                        <!-- Modal -->
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <!-- Modal -->
-                        <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="stripeConfirmadoModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmadoModalLabel">CONFIRMADO</h5>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval();">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="yape">
-        <h2 class="grid-title">{{ordersYape.name | uppercase }}</h2>
-        <div *ngFor="let item of ordersYape.items; let i = index">
-            <!-- template -->
-            <div class="order align-items-start">
-                <div class="row">
-                    <div class="col-6 text">
-                        <h6>{{item.name}}</h6>
-                        <h6>{{item.number}}</h6>
-                        <h6>{{item.email}}</h6>
-                        <h6>{{item.address}}</h6>
-                        <h6>{{item.reference}}</h6>
-                        <h6>{{item.comentary}}</h6>
-                        <h5>{{item.date | date:'shortTime' }}</h5>
-
-                    </div>
-                    <div class="col-6">
-                        <button (click)="unsubscribeDataInterval();" class="btn-service" data-toggle="modal" #elem [attr.data-target]="'#order'+item.id">ORDEN</button>
-                        <div class="modal fade" #elem [attr.id]="'order'+item.id" tabindex="-1" role="dialog" aria-labelledby="yapeOrdenModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="pagadoModalLabel">ORDEN</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h6>PRODUCTS</h6>
-                                            </div>
-                                            <div class="col-6 quantity">
-                                                <h6>CANTIDAD</h6>
-                                            </div>
-                                        </div>
-                                        <div *ngFor="let product of ordersYape.items[i].details">
+                                        <div *ngFor="let product of dashboard[i].details">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <h6>{{product.product.name}}</h6>
@@ -124,7 +71,7 @@
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
                         <!-- Modal -->
-                        <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="yapePagadoModalLabel" aria-hidden="true">
+                        <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" data-backdrop="false" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -141,7 +88,7 @@
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
                         <!-- Modal -->
 
-                        <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="yapeConfirmadoModalLabel" aria-hidden="true">
+                        <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="confirmadoModalLabel" data-backdrop="false" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -158,88 +105,15 @@
                 </div>
             </div>
         </div>
+
     </div>
-    <div class="stripe">
-        <h2 class="grid-title">{{ordersStripe.name | uppercase }}</h2>
-        <div *ngFor="let item of ordersStripe.items; let i = index">
-            <!-- template -->
+    <div class="formadepago">
+        <h2 class="grid-title">FORMA DE PAGO</h2>
+        <div *ngFor="let item of dashboard">
             <div class="order align-items-start">
-                <div class="row">
-                    <div class="col-6 text">
-                        <h6>{{item.name}}</h6>
-                        <h6>{{item.number}}</h6>
-                        <h6>{{item.email}}</h6>
-                        <h6>{{item.address}}</h6>
-                        <h6>{{item.reference}}</h6>
-                        <h6>{{item.comentary}}</h6>
-                        <h5>{{item.date | date:'shortTime' }}</h5>
-                    </div>
-                    <div class="col-6">
-                        <button (click)="unsubscribeDataInterval();" class="btn-service" data-toggle="modal" #elem [attr.data-target]="'#order'+item.id">ORDEN</button>
-                        <div class="modal fade" #elem [attr.id]="'order'+item.id" tabindex="-1" role="dialog" aria-labelledby="efectivoOrdenModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="pagadoModalLabel">ORDEN</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h6>PRODUCTS</h6>
-                                            </div>
-                                            <div class="col-6 quantity">
-                                                <h6>CANTIDAD</h6>
-                                            </div>
-                                        </div>
-                                        <div *ngFor="let product of ordersStripe.items[i].details">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <h6>{{product.product.name}}</h6>
-                                                </div>
-                                                <div class="col-6 quantity">
-                                                    <h6>{{product.quantity}}</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button data-dismiss="modal" type="submit" (click)="subscribeDataInterval();">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
-                        <!-- Modal -->
-                        <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="efectivoPagadoModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="pagadoModalLabel">PAGADO</h5>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setPaidState(item.paid, item.id); subscribeDataInterval();">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.confirmed==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#confirmed'+item.id">CONFIRMADO</button>
-                        <!-- Modal -->
-                        <div class="modal fade" #elem [attr.id]="'confirmed'+item.id" tabindex="-1" role="dialog" aria-labelledby="efectivoConfirmadoModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="confirmadoModalLabel">CONFIRMADO</h5>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" data-dismiss="modal" (click)="subscribeDataInterval()">Cancelar</button>
-                                        <button data-dismiss="modal" type="submit" (click)="setconfirmedState(item.confirmed, item.id); subscribeDataInterval();">Confirmar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row box">
+                    <div class="col-12 text">
+                        <h6>forma de pago :{{item.payment_method}}</h6>
                     </div>
                 </div>
             </div>
