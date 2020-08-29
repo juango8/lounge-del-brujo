@@ -69,7 +69,6 @@ export class FirstviewComponent implements OnInit {
 }
 
   setPaidState(value:boolean, id:number){
-     this.sound.play();
     this.paidState = !value;
     const update = {
       paid : this.paidState
