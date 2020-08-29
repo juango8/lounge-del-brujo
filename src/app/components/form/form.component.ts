@@ -176,7 +176,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   crearFormulario(){
     this.forma = this.fb.group({
       name: ['', Validators.required],
-      number: ['', [Validators.required, Validators.minLength(9), Validators.pattern("^[0-9]*$")]],
+      number: ['', [Validators.required, Validators.minLength(12), Validators.pattern("^[+0-9]*$")]],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
       address: ['', Validators.required],
       reference:['', Validators.required],

@@ -63,7 +63,7 @@
                             <div class="form-group row">
                                 <label class="col-2 col-form-label">Comentario</label>
                                 <div class="col">
-                                    <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Ejemplo: Mayonesa Adicional" formControlName="comentary">
+                                    <input [readonly]="disabled || checker()" class="form-control" type="text" placeholder="Ejemplo: Veganesa Adicional" formControlName="comentary">
                                 </div>
                             </div>
                             <div class="form-group row justify-content-center">
@@ -98,7 +98,7 @@
                         <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
                             <div *ngFor="let item of pay">
                                 <div>
-                                    <button [disabled]="disabled || checker() || checkerMap()" (click)="setIdPay(item.id)" class="btn-map btn-style" data-toggle="modal" data-target="#exampleModal">
+                                    <button [disabled]="disabled || checker() || !position && !checkerMap()" (click)="setIdPay(item.id)" class="btn-map btn-style" data-toggle="modal" data-target="#exampleModal">
                                         Paga con {{item.name}}
                                     </button>
                                     <!-- Modal -->
