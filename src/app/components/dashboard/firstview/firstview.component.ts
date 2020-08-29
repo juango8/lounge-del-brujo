@@ -93,13 +93,11 @@ export class FirstviewComponent implements OnInit {
   checkConfirmedState()
   {
     for(let i=0;i<this.dashboard.length;i++){
-      for(let j=0;j<this.dashboard[i]["items"].length;j++){
-        // console.log(this.test[i]["items"])
-        if(this.dashboard[i]["items"][j].confirmed==false)
+      {
+        if(this.dashboard[i].confirmed==false)
         {
           this.sound.play();
         }
-
       }
     }
   }
