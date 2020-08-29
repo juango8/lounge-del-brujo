@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, AfterViewInit, ChangeDetectorRef} from '@angular/core';
 import { CantidadService } from '../../services/cantidad.service';
 import { PayformService } from '../../services/payform.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
@@ -31,6 +32,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   order:FormGroup;
   disabled:boolean = false;
   confirmed:boolean = false;
+  position:boolean = false;
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
@@ -50,6 +52,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     lng: number;
     acc: number;
   constructor(
+    private spinner: NgxSpinnerService,
     private http: HttpClient,
     private _service: CantidadService,
     private _service2: PayformService,
@@ -155,11 +158,13 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.cantidadDelivery = resp.cost;
       }
     );
+    this.position = true;
     this.forma.value.longitude = this.marker.getLatLng().lng + '';
     this.forma.value.latitude = this.marker.getLatLng().lat + '';
     this.marker.dragging.disable();
   }
   enablemarker(){
+    this.position = false;
     this.marker.dragging.enable();
   }
 

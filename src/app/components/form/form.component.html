@@ -76,21 +76,21 @@
                                     <small *ngIf="checkerMap()" class="text-danger">
                                         Debe fijar su ubicacion de manera obligatoria
                                     </small>
+                                    <small *ngIf="position" class="text-success animate__animated animate__fadeIn">
+                                        <i class="fas fa-check-circle"></i> LA UBICACIÓN ESTA FIJADA 
+                                    </small>
+                                    <small *ngIf="!position && !checkerMap()" class="text-danger animate__animated animate__fadeIn">
+                                        <i class="fas fa-exclamation-circle"></i> NO HAY NINGUNA UBICACIÓN FIJADA
+                                    </small>
                                 </div>
-                                <a class="btn-map" (click)="setLATLNG(lat, lng)"><i class="fas fa-location-arrow"></i> Ubícame</a>
-                                <a class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> Fijar</a>
-                                <a class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> Editar</a>
+                                <a *ngIf="!confirmed && !nextform" class="btn-map" (click)="setLATLNG(lat, lng)"><i class="fas fa-location-arrow"></i> Ubícame</a>
+                                <a *ngIf="!confirmed && !nextform" class="btn-map" (click)="getlatlng()"><i class="fas fa-map-marker-alt"></i> Fijar</a>
+                                <a *ngIf="!confirmed && !nextform" class="btn-map" (click)="enablemarker()"><i class="fas fa-edit"></i> Editar</a>
                             </div>
                             <div *ngIf="!checker()">
                                 <h3>Cantidad a pagar:</h3>
-                                <ul>
-                                    <li>
-                                        <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
-                                    </li>
-                                    <li *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">
-                                        <h5>Delivery: S/.{{ cantidadDelivery }},00</h5>
-                                    </li>
-                                </ul>
+                                <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
+                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: S/.{{ cantidadDelivery }},00</h5>
                                 <h3 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Total: S/. {{ cantidadDesdeService + cantidadDelivery }},00 </h3>
                             </div>
                         </div>

@@ -69,7 +69,8 @@
                             </div>
                         </div>
                         <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==false" class="btn-service red" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
-                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button (click)="unsubscribeDataInterval();" *ngIf="item.paid==true  && item.payment_method.id !=3" class="btn-service green" data-toggle="modal" #elem [attr.data-target]="'#paid'+item.id">PAGADO</button>
+                        <button *ngIf="item.payment_method.id ==3" class="btn-service green">PAGADO</button>
                         <!-- Modal -->
                         <div class="modal fade" #elem [attr.id]="'paid'+item.id" tabindex="-1" role="dialog" aria-labelledby="pagadoModalLabel" data-backdrop="false" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -113,7 +114,7 @@
             <div class="order align-items-start">
                 <div class="row box">
                     <div class="col-12 text">
-                        <h6>forma de pago :{{item.payment_method}}</h6>
+                        <h6>forma de pago : {{item.payment_method.name}}</h6>
                     </div>
                 </div>
             </div>
