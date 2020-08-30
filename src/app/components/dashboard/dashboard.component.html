@@ -3,6 +3,12 @@
     <div class="main custom-control-inline">
         <h1>Dashboard</h1>
         <div class="main-buttons custom-control-inline">
+            <button *ngIf="sound==false" (click)="initSound()" class="payform sound">
+                ACTIVAR ALARMA
+            </button>
+            <button *ngIf="sound==true" class="payformg sound">
+                ALARMA ACTIVA
+            </button>
             <button (click)="getIdView(item.id)" class="payform" *ngFor="let item of views">
                 {{item.name | uppercase}}
               </button>

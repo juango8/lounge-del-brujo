@@ -276,9 +276,9 @@ export class FormComponent implements OnInit, AfterViewInit {
 
  sendData(){
   console.log(JSON.stringify(this.forma.value));
-    this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.forma.value ).subscribe(
+    this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounjje/orders', this.forma.value ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log(response); console.log(JSON.stringify(this.forma.value));},
-    (error) =>{ console.log(error.status)},
+    (error) =>{ console.log("ERROR",error.status)},
   )
   this.sendOrder(this.order.value);
 
