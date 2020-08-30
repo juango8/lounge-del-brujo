@@ -4,6 +4,7 @@ import { PayformService } from '../../services/payform.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 import * as L from 'leaflet';
 
 import { icon, Marker } from 'leaflet';
@@ -33,11 +34,13 @@ export class FormComponent implements OnInit, AfterViewInit {
   disabled:boolean = false;
   confirmed:boolean = false;
   position:boolean = false;
+  uploadfile:boolean = false;
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
   originalLatLong = [-16.3855114, -71.5440775];
   nextform:boolean = false;
+  fileName:any;
 
   public map;
   public marker: L.marker;
@@ -176,7 +179,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   crearFormulario(){
     this.forma = this.fb.group({
       name: ['', Validators.required],
-      number: ['', [Validators.required, Validators.minLength(12), Validators.pattern("^[+0-9]*$")]],
+      number: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(12), Validators.pattern("^[+0-9]*$")]],
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
       address: ['', Validators.required],
       reference:['', Validators.required],
@@ -234,15 +237,16 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   onFileChange(event) {
     const reader = new FileReader();
- 
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.fileName = file.name;
       reader.readAsDataURL(file);
   
       reader.onload = () => {
         this.forma.patchValue({
           image_payment: reader.result
        });
+       this.uploadfile = true;
        this.forma.value.payment_method = this.id;
       this.forma.value.details = this.products;
        this.getlatlng();
@@ -278,7 +282,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   console.log(JSON.stringify(this.forma.value));
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounjje/orders', this.forma.value ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log(response); console.log(JSON.stringify(this.forma.value));},
-    (error) =>{ console.log("ERROR",error.status)},
+    (error) =>Swal.fire('Por favor complete todos los campos obligatorios.', error.error.msg, 'error'),
   )
   this.sendOrder(this.order.value);
 
