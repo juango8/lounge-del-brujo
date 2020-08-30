@@ -34,11 +34,13 @@ export class FormComponent implements OnInit, AfterViewInit {
   disabled:boolean = false;
   confirmed:boolean = false;
   position:boolean = false;
+  uploadfile:boolean = false;
   data:any[] = [];
   id:any = 0;
   products:any[]=[];
   originalLatLong = [-16.3855114, -71.5440775];
   nextform:boolean = false;
+  fileName:any;
 
   public map;
   public marker: L.marker;
@@ -235,15 +237,16 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   onFileChange(event) {
     const reader = new FileReader();
- 
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
+      this.fileName = file.name;
       reader.readAsDataURL(file);
   
       reader.onload = () => {
         this.forma.patchValue({
           image_payment: reader.result
        });
+       this.uploadfile = true;
        this.forma.value.payment_method = this.id;
       this.forma.value.details = this.products;
        this.getlatlng();

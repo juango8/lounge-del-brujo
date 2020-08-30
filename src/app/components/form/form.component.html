@@ -73,13 +73,10 @@
                                         <div id="map">
                                         </div>
                                     </div>
-                                    <small *ngIf="checkerMap()" class="text-danger">
-                                        Debe fijar su ubicación para proceder con el pedido
-                                    </small>
                                     <small *ngIf="position" class="text-success animate__animated animate__fadeIn">
                                         <i class="fas fa-check-circle"></i> LA UBICACIÓN ESTA FIJADA 
                                     </small>
-                                    <small *ngIf="!position && !checkerMap()" class="text-danger animate__animated animate__fadeIn">
+                                    <small *ngIf="!position" class="text-danger animate__animated animate__fadeIn">
                                         <i class="fas fa-exclamation-circle"></i> NO HAY NINGUNA UBICACIÓN FIJADA
                                     </small>
                                 </div>
@@ -129,10 +126,35 @@
                     <app-cash *ngIf="getidPay()==1 && confirmed"></app-cash>
                     <app-yape *ngIf="getidPay()==2 && nextform===true && disabled"></app-yape>
                     <div *ngIf="nextform===true && disabled" class="animate__animated animate__fadeIn">
-                        <label class="col col-form-label">Subir voucher</label>
-                        <div class="form-group row">
-                            <input type="file" (change)="onFileChange($event)" />
-                            <button type="submit" (click)="sendData()">Enviar</button>
+                        <label class="col col-form-label">Subir comprobante de pago</label>
+                        <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
+                            <input class="file" type="file" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
+                            <small *ngIf="uploadfile" class="text-success animate__animated animate__fadeIn">
+                                <i class="fas fa-check-circle"></i> EL ARCHIVO ({{ fileName | uppercase }}) SE SUBIO CON ÉXITO
+                            </small>
+                            <small *ngIf="!uploadfile" class="text-danger animate__animated animate__fadeIn">
+                                <i class="fas fa-exclamation-circle"></i> DEBE SUBIR EL COMPROBANTE DE PAGO
+                            </small>
+                            <button class="btn-map btn-final" type="submit" (click)="sendData()" data-toggle="modal" data-target="#finalmodal">Finalizar compra</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="finalmodal" tabindex="-1" role="dialog" aria-labelledby="finalModalLabel" data-backdrop="false" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Finalizar compra</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¡Felicitaciones! Tu compra ha sido procesada.
+                                            <br> El tiempo aproximada de entrega es de 45 minutos.
+                                            <br> Gracias por tu apertura a vivir algo diferente.
+                                            <br> En caso quieras contactarnos puedes escribirnos o llamarnos a este número +51954719605.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button [routerLink]="'/carta'" data-dismiss="modal">Ok</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>

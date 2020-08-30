@@ -44,6 +44,14 @@ input {
     color: black;
 }
 
+.file {
+    width: auto;
+}
+
+.btn-final {
+    margin-top: 1rem;
+}
+
 .btn-style {
     margin-bottom: .5rem;
     margin-left: 2.5rem;
