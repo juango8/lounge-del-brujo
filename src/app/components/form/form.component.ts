@@ -168,9 +168,9 @@ export class FormComponent implements OnInit, AfterViewInit {
               this.test = 'S/.' + this.cantidadDelivery + ',00';
           } else {
               this.deliveryRequest = true;
-              window.alert('Ubicación fuera de rango de delivery.');
               this.cantidadDelivery = 0;
               this.test = 'Ubicación no valida';
+              window.alert('Ubicación fuera de rango de delivery.');
               this.distanceValidation = false;
           }
       }
