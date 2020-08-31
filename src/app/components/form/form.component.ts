@@ -132,6 +132,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 await this.delay(2000);
                 this.lat = pos.lat;
                 this.lng = pos.lng;
+                this.acc = pos.acc;
                 console.log('current pos', this.lat, this.lng);
                 this.setLATLNG(this.lat, this.lng);
             })();
@@ -155,8 +156,13 @@ export class FormComponent implements OnInit, AfterViewInit {
       latitude: this.marker.getLatLng().lat + ''
     }).subscribe(
       resp => {
-        this.deliveryRequest = true;
-        this.cantidadDelivery = resp.cost;
+          // console.log('aqui', resp);
+          if (typeof resp.cost !== 'undefined'){
+              this.deliveryRequest = true;
+              this.cantidadDelivery = resp.cost;
+          } else {
+              window.alert('Ubicacion fuera de rango de delivery');
+          }
       }
     );
     this.position = true;
@@ -170,8 +176,12 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   setLATLNG(a: number, b: number){
-      this.marker.setLatLng([a, b]);
-      this.map.panTo(new L.LatLng(a, b));
+      if (this.acc < 200) {
+          this.marker.setLatLng([a, b]);
+          this.map.panTo(new L.LatLng(a, b));
+      } else {
+          window.alert('Ubicación no encontrada');
+      }
   }
 
   crearFormulario(){
@@ -235,11 +245,11 @@ export class FormComponent implements OnInit, AfterViewInit {
 
   onFileChange(event) {
     const reader = new FileReader();
- 
+
     if(event.target.files && event.target.files.length) {
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-  
+
       reader.onload = () => {
         this.forma.patchValue({
           image_payment: reader.result
