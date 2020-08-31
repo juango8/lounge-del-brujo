@@ -54,6 +54,8 @@ export class FormComponent implements OnInit, AfterViewInit {
     lat: number;
     lng: number;
     acc: number;
+    distanceValidation = true;
+    test: string;
   constructor(
     private spinner: NgxSpinnerService,
     private http: HttpClient,
@@ -162,8 +164,14 @@ export class FormComponent implements OnInit, AfterViewInit {
           if (typeof resp.cost !== 'undefined'){
               this.deliveryRequest = true;
               this.cantidadDelivery = resp.cost;
+              this.distanceValidation = true;
+              this.test = 'S/.' + this.cantidadDelivery + ',00';
           } else {
-              window.alert('Ubicacion fuera de rango de delivery');
+              this.deliveryRequest = true;
+              window.alert('Ubicación fuera de rango de delivery.');
+              this.cantidadDelivery = 0;
+              this.test = 'Ubicación no valida';
+              this.distanceValidation = false;
           }
       }
     );

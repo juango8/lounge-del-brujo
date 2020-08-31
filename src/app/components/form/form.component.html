@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <small *ngIf="position" class="text-success animate__animated animate__fadeIn">
-                                        <i class="fas fa-check-circle"></i> LA UBICACIÓN ESTA FIJADA 
+                                        <i class="fas fa-check-circle"></i> LA UBICACIÓN ESTA FIJADA
                                     </small>
                                     <small *ngIf="!position" class="text-danger animate__animated animate__fadeIn">
                                         <i class="fas fa-exclamation-circle"></i> NO HAY NINGUNA UBICACIÓN FIJADA
@@ -87,7 +87,8 @@
                             <div *ngIf="!checker()">
                                 <h3>Cantidad a pagar:</h3>
                                 <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
-                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: S/.{{ cantidadDelivery }},00</h5>
+                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: {{test}}</h5>
+<!--                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: S/.{{ cantidadDelivery }},00</h5>-->
                                 <h3 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Total: S/. {{ cantidadDesdeService + cantidadDelivery }},00 </h3>
                             </div>
                         </div>
