@@ -11,6 +11,10 @@
     margin-left: 3rem;
 }
 
+.sound {
+    margin-right: 3rem;
+}
+
 .logo {
     background-color: black;
     width: 100%;
@@ -26,10 +30,17 @@
 .payform {
     border-radius: 1rem;
     color: white;
+    background: rgb(120, 22, 33);
+}
+
+.payformg {
+    border-radius: 1rem;
+    color: white;
+    background: rgb(0, 0, 120);
 }
 
 button {
-    background: rgb(120, 22, 33);
+    
     color: #ffffff;
     border-radius: 0 0 4px 4px;
     border: 0;

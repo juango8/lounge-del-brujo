@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   views:any[] = [{id:'0', name:'DASHBOARD'}];
   id:any = 0;
+  sound:boolean = false;
   constructor(private _usuarioService: UsuarioService,
               private router:Router) { }
 
@@ -24,6 +25,10 @@ export class DashboardComponent implements OnInit {
 
   getIdView(id:any){
     this.id = id;
+  }
+
+  initSound(){
+    this.sound=true;
   }
 
 }
