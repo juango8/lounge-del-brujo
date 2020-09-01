@@ -88,7 +88,7 @@
                                 <h3>Cantidad a pagar:</h3>
                                 <h5>Pedido: S/.{{ cantidadDesdeService }},00</h5>
                                 <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: {{test}}</h5>
-<!--                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: S/.{{ cantidadDelivery }},00</h5>-->
+                                <!--                                <h5 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Delivery: S/.{{ cantidadDelivery }},00</h5>-->
                                 <h3 *ngIf="deliveryRequest" class="animate__animated animate__fadeIn">Total: S/. {{ cantidadDesdeService + cantidadDelivery }},00 </h3>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
                             <div *ngFor="let item of pay">
                                 <div>
-                                    <button [disabled]="disabled || checker() || !position && !checkerMap()" (click)="setIdPay(item.id)" class="btn-map btn-style" data-toggle="modal" data-target="#exampleModal">
+                                    <button [disabled]="disabled || checker() || !position" (click)="setIdPay(item.id)" class="btn-map btn-style" data-toggle="modal" data-target="#exampleModal">
                                         Paga con {{item.name}}
                                     </button>
                                     <!-- Modal -->

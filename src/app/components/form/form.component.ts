@@ -186,7 +186,7 @@ export class FormComponent implements OnInit, AfterViewInit {
   }
 
   setLATLNG(a: number, b: number){
-      if (this.acc < 200) {
+      if (this.acc < 1500) {
           this.marker.setLatLng([a, b]);
           this.map.panTo(new L.LatLng(a, b));
       } else {
