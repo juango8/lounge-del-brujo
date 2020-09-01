@@ -21,6 +21,8 @@ import { FormComponent } from './components/form/form.component';
 import { FindUsComponent } from './components/find-us/find-us.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { CardComponent } from './components/form/card/card.component';
+import { PlinComponent } from './components/form/plin/plin.component';
+import { TransferenceComponent } from './components/form/transference/transference.component';
 import { CashComponent } from './components/form/cash/cash.component';
 import { YapeComponent } from './components/form/yape/yape.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -29,6 +31,7 @@ import { SecondviewComponent } from './components/dashboard/secondview/secondvie
 import { LogoBarComponent } from './shared/logo-bar/logo-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ComponentsComponent } from './components/components.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { ComponentsComponent } from './components/components.component';
     FindUsComponent,
     NavbarComponent,
     CardComponent,
+    PlinComponent,
+    TransferenceComponent,
     CashComponent,
     YapeComponent,
     DashboardComponent,

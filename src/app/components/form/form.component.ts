@@ -293,14 +293,17 @@ export class FormComponent implements OnInit, AfterViewInit {
 
 
  nextformCashAndYape(){
-   this.nextform = true;
+  if( this.forma.invalid ){
+    Swal.fire('error', 'Por favor complete todos los campos obligatorios.','error');
+    };
+    this.nextform = true;
  }
 
  sendData(){
   console.log(JSON.stringify(this.forma.value));
     this.http.post('https://admin.loungedelbrujo.com/ecommerce/lounje/orders', this.forma.value ).subscribe(
     (response:any) => {this.order.value.id = response.id; this.order.value.email = response.email;this.confirmed = true;/* this.nextform = false;  */console.log(response); console.log(JSON.stringify(this.forma.value));},
-    (error) =>Swal.fire('Por favor complete todos los campos obligatorios.', error.error.msg, 'error'),
+    (error) =>Swal.fire( 'error','Por favor complete todos los campos obligatorios.','error'),
   )
   this.sendOrder(this.order.value);
 
