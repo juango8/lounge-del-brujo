@@ -146,6 +146,10 @@ button:disabled {
     margin-top: 1rem;
 }
 
+.modal {
+    color: black;
+}
+
 @-webkit-keyframes loading {
     0% {
         -webkit-transform: rotate(0deg);

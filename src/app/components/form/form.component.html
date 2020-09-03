@@ -10,7 +10,6 @@
             <div class="col d-flex justify-content-center alig-items-center">
                 <form id="payment-form" autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
                     <div>
-
                         <h3 *ngIf="checker()">No se ha seleccionado ningún producto, porfavor regrese a la <a class="formlink" [routerLink]="'/carta'">carta</a>.
                         </h3>
                         <br>
@@ -112,8 +111,8 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button [routerLink]="'/carta'" type="button" data-dismiss="modal">Cancelar</button>
-                                                    <button *ngIf="getidPay()==3 || getidPay()==1" data-dismiss="modal" (click)="sendData()" type="submit">Confirmar</button>
-                                                    <button *ngIf="getidPay()!=3 && getidPay()!=1" data-dismiss="modal" (click)="nextformCashAndYape()">Confirmar</button>
+                                                    <button *ngIf="getidPay()==3" data-dismiss="modal" (click)="sendData()" type="submit">Continuar</button>
+                                                    <button *ngIf="getidPay()!=3" data-dismiss="modal" (click)="nextformCashAndYape()">Continuar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,9 +123,11 @@
                     </div>
                     <br>
                     <app-card *ngIf="getidPay()==3 && confirmed && order.value.id != ''"></app-card>
-                    <app-cash *ngIf="getidPay()==1 && confirmed"></app-cash>
+                    <app-cash *ngIf="getidPay()==1 && nextform===true && disabled"></app-cash>
                     <app-yape *ngIf="getidPay()==2 && nextform===true && disabled"></app-yape>
-                    <div *ngIf="nextform===true && disabled" class="animate__animated animate__fadeIn">
+
+                    <!-- SUBIR IMAGEN PARA YAPE - PLIN Y TRANSFERENCIA BANCARIA -->
+                    <div *ngIf="nextform===true && disabled && getidPay()!=1" class="animate__animated animate__fadeIn">
                         <label class="col col-form-label">Subir comprobante de pago</label>
                         <div class="row form-group col d-flex justify-content-center alig-items-center input-group">
                             <input class="file" type="file" (change)="onFileChange($event)" accept=".png, .jpg, .jpeg" />
@@ -136,23 +137,25 @@
                             <small *ngIf="!uploadfile" class="text-danger animate__animated animate__fadeIn">
                                 <i class="fas fa-exclamation-circle"></i> DEBE SUBIR EL COMPROBANTE DE PAGO
                             </small>
-                            <button class="btn-map btn-final" type="submit" (click)="sendData()" data-toggle="modal" data-target="#finalmodal">Finalizar compra</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="finalmodal" tabindex="-1" role="dialog" aria-labelledby="finalModalLabel" data-backdrop="false" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Finalizar compra</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            ¡Felicitaciones! Tu compra ha sido procesada.
-                                            <br> El tiempo aproximada de entrega es de 45 minutos.
-                                            <br> Gracias por tu apertura a vivir algo diferente.
-                                            <br> En caso quieras contactarnos puedes escribirnos o llamarnos a este número +51954719605.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button [routerLink]="'/carta'" data-dismiss="modal">Ok</button>
-                                        </div>
+                        </div>
+                    </div>
+                    <div *ngIf="nextform===true && disabled">
+                        <button class="btn-map btn-final" type="submit" (click)="sendData()" data-toggle="modal" data-target="#finalmodal">Finalizar compra</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="finalmodal" tabindex="-1" role="dialog" aria-labelledby="finalModalLabel" data-backdrop="false" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Finalizar compra</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¡Felicitaciones! Tu compra ha sido procesada.
+                                        <br> El tiempo aproximada de entrega es de 45 minutos.
+                                        <br> Gracias por tu apertura a vivir algo diferente.
+                                        <br> En caso quieras contactarnos puedes escribirnos o llamarnos a este número +51954719605.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button [routerLink]="'/carta'" data-dismiss="modal">Ok</button>
                                     </div>
                                 </div>
                             </div>
